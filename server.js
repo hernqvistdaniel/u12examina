@@ -21,9 +21,8 @@ app.use('/api/posts', posts)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () =>
-  console.log(`
-***
+  console.log(
+`***
 Server is up and running at: ${PORT}
-***
-`)
+***`)
 )

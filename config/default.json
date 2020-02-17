@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://devhubuser:devhubpassword@devhub-cmmbq.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtToken": "secrettoken"
+  "jwtToken": "secrettoken",
+  "githubClientId": "Iv1.3c844858f5059608",
+  "githubSecret": "768744f008221b4657d718039ac911960902eba4"
 }
