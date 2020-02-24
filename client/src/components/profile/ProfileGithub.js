@@ -4,15 +4,22 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getGithubRepos } from '../../actions/profile';
 
-const ProfileGithub = ({ username, getGithubRepos, repos }) => {
+const ProfileGithub = ({
+  username,
+  getGithubRepos,
+  repos,
+  profile: { loading }
+}) => {
   useEffect(() => {
     getGithubRepos(username);
   }, [getGithubRepos]);
   return (
     <div className="profile-github">
       <h2 className="text-primary my-1">Github Repos</h2>
-      {repos === null ? (
+      {loading ? (
         <Spinner />
+      ) : !repos.length > 0 ? (
+        <p>No repos connected to this account.</p>
       ) : (
         repos.map(repo => (
           <div key={repo._id} className="repo bg-white p-1 my-1">
@@ -51,11 +58,13 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
 ProfileGithub.propTypes = {
   getGithubRepos: PropTypes.func.isRequired,
   repos: PropTypes.array.isRequired,
-  username: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  repos: state.profile.repos
+  repos: state.profile.repos,
+  profile: state.profile
 });
 
 export default connect(mapStateToProps, { getGithubRepos })(ProfileGithub);
