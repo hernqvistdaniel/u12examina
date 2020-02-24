@@ -7,6 +7,7 @@ const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 
 const User = require('../../models/User');
+const Profile = require('../../models/Profile');
 
 // GET api/auth
 // test route
@@ -60,6 +61,21 @@ router.post(
           id: user.id
         }
       };
+
+      try {
+        const profile = await Profile.findOne({
+          user: user.id
+        });
+
+        if (!profile) {
+          console.log('couldnt fetch');
+        } else {
+          profile.lastLogin = Date.now();
+          await profile.save();
+        }
+      } catch (err) {
+        console.error(err.message);
+      }
 
       jwt.sign(
         payload,

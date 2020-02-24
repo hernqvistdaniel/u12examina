@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
 
 const ProfileTop = ({
   profile: {
@@ -8,6 +9,7 @@ const ProfileTop = ({
     location,
     website,
     social,
+    lastLogin,
     user: { name, avatar }
   }
 }) => {
@@ -17,6 +19,23 @@ const ProfileTop = ({
       <h1 className="large">{name}</h1>
       <p className="lead">
         {status} {company && <span> at {company}</span>}
+      </p>
+      <p>
+        <Moment
+          filter={datePriorToRendering => {
+            const capitalize = word =>
+              word.charAt(0).toUpperCase() + word.slice(1);
+
+            let [time = '', format = '', ago = ''] = datePriorToRendering.split(
+              ' '
+            );
+
+            return `${time} ${capitalize(format)} ${capitalize(ago)}`;
+          }}
+          fromNow
+        >
+          {lastLogin}
+        </Moment>
       </p>
       <p>{location && <span>{location}</span>}</p>
       <div className="icons my-1">
