@@ -32,15 +32,17 @@ const PostItem = ({
             type="button"
             className="btn btn-light"
           >
-            <i className="fas fa-thumbs-up"></i>{' '}
-            <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
+            <i className="fas fa-plus"></i>{' '}
           </button>
+          <span className="votes">
+            <span>{likes.length}</span>
+          </span>
           <button
             onClick={e => removeLike(_id)}
             type="button"
             className="btn btn-light"
           >
-            <i className="fas fa-thumbs-down"></i>
+            <i className="fas fa-minus"></i>
           </button>
           <Link to={`/posts/${_id}`} className="btn btn-primary">
             Comments{' '}
