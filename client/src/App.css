@@ -5,6 +5,7 @@
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --secondary-color: #c0c0c0;
 }
 
 * {
@@ -19,6 +20,10 @@ body {
   line-height: 1.6;
   background-color: #fff;
   color: #333;
+}
+
+.postBackground {
+  background-color: #fff5cd;
 }
 
 a {
@@ -496,9 +501,9 @@ input[type='date']:disabled {
   margin-bottom: 0.5rem;
 }
 
-.votes {
-  font-weight: 800;
-  margin: 0 10px 0 0;
+.votesDiv > span {
+  line-height: 0px;
+  margin: 0 15px;
   font-size: 20px;
 }
 
