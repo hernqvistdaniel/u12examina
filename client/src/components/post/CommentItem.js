@@ -12,7 +12,7 @@ const CommentItem = ({
   deleteComment
 }) => {
   return (
-    <div class="post bg-light p-1 my-1">
+    <div class="post p-1 my-1">
       <Link to={`/profile/${user}`}>
         <img style={{ width: '20px' }} src={avatar} alt="" />
         <p>{name}</p>

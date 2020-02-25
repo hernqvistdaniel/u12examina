@@ -501,10 +501,21 @@ input[type='date']:disabled {
   margin-bottom: 0.5rem;
 }
 
-.votesDiv > span {
+.buttonCont {
+  display: flex;
+  align-items: flex-end;
+}
+
+.votesDiv {
+  display: flex;
+  flex-direction: row;
   line-height: 0px;
-  margin: 0 15px;
-  font-size: 20px;
+  margin: 0;
+  font-size: 31px;
+}
+
+.votesDiv > span {
+  line-height: 100%;
 }
 
 /* Mobile Styles */

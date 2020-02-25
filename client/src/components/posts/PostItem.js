@@ -13,7 +13,7 @@ const PostItem = ({
   post: { _id, text, name, avatar, user, likes, comments, date },
   showActions
 }) => (
-  <div className="post postBackground p-1 my-1">
+  <div className="post bg-light p-1 my-1">
     <div>
       <Link to={`/profile/${user}`}>
         <img className="round-img" src={avatar} alt="" />
@@ -26,7 +26,7 @@ const PostItem = ({
         Posted <Moment fromNow>{date}</Moment>
       </p>
       {showActions && (
-        <Fragment>
+        <div className="buttonCont">
           <span className="votesDiv">
             <i
               onClick={e => addLike(_id)}
@@ -55,7 +55,7 @@ const PostItem = ({
               <i className="fas fa-times"></i>
             </button>
           )}
-        </Fragment>
+        </div>
       )}
     </div>
   </div>
