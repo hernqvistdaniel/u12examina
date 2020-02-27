@@ -12,6 +12,18 @@ const getNrOfComments = (posts, id) => {
   return numberCom;
 };
 
+const getNrOfLikes = posts => {
+  let numberLikes = 0;
+
+  posts.forEach(post => {
+    post.likes.forEach(like => {
+      numberLikes += 1;
+    });
+  });
+  return numberLikes;
+};
+
 module.exports = {
-  getNrOfComments
+  getNrOfComments,
+  getNrOfLikes
 };

@@ -7,6 +7,7 @@ const ProfileAbout = ({
     skills,
     nrComments,
     nrPosts,
+    nrLikes,
     user: { name }
   }
 }) => (
@@ -33,12 +34,13 @@ const ProfileAbout = ({
       <h2 className="text-primary">Stats</h2>
 
       <p>
-        Total number of Posts:{' '}
-        <badge className="badge badge-dark"> {nrPosts} </badge>
+        Total number of Posts: <b> {nrPosts} </b>
       </p>
       <p>
-        Total number of Comments:{' '}
-        <badge className="badge badge-dark"> {nrComments} </badge>
+        Total number of Comments: <b> {nrComments} </b>
+      </p>
+      <p>
+        Your Posts total scores: <b> {nrLikes} </b>
       </p>
     </Fragment>
   </div>

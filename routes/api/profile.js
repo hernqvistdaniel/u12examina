@@ -4,7 +4,7 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const request = require('request');
 const config = require('config');
-const { getNrOfComments } = require('./utils');
+const { getNrOfComments, getNrOfLikes } = require('./utils');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Post = require('../../models/Post');
@@ -148,8 +148,14 @@ router.get('/user/:user_id', async (req, res) => {
       req.params.user_id
     );
 
+    const postsByAuthor = await Post.find({ user: req.params.user_id });
+
+    const nrLikes = getNrOfLikes(postsByAuthor);
+
+    console.log(nrLikes);
+
     if (!profile) return res.status(400).json({ msg: 'Profile not found.' });
-    res.json({ ...profile._doc, nrPosts, nrComments });
+    res.json({ ...profile._doc, nrPosts, nrComments, nrLikes });
   } catch (err) {
     console.error(err);
     if (err.kind == 'ObjectId') {
