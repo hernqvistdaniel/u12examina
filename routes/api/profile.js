@@ -4,7 +4,7 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const request = require('request');
 const config = require('config');
-
+const { getNrOfComments } = require('./utils');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Post = require('../../models/Post');
@@ -136,8 +136,20 @@ router.get('/user/:user_id', async (req, res) => {
       user: req.params.user_id
     }).populate('user', ['name', 'avatar']);
 
+    const nrPosts = await Post.countDocuments({ user: req.params.user_id });
+
+    const postsWhereSpecUserHasCommented = await Post.find({
+      comments: {
+        $elemMatch: { user: req.params.user_id }
+      }
+    });
+    const nrComments = getNrOfComments(
+      postsWhereSpecUserHasCommented,
+      req.params.user_id
+    );
+
     if (!profile) return res.status(400).json({ msg: 'Profile not found.' });
-    res.json(profile);
+    res.json({ ...profile._doc, nrPosts, nrComments });
   } catch (err) {
     console.error(err);
     if (err.kind == 'ObjectId') {

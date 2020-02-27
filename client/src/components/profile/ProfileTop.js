@@ -21,19 +21,8 @@ const ProfileTop = ({
         {status} {company && <span> at {company}</span>}
       </p>
       <p>
-        <Moment
-          filter={datePriorToRendering => {
-            const capitalize = word =>
-              word.charAt(0).toUpperCase() + word.slice(1);
-
-            let [time = '', format = '', ago = ''] = datePriorToRendering.split(
-              ' '
-            );
-
-            return `${time} ${capitalize(format)} ${capitalize(ago)}`;
-          }}
-          fromNow
-        >
+        Last Login:{' '}
+        <Moment className="stats" fromNow>
           {lastLogin}
         </Moment>
       </p>

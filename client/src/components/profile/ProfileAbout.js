@@ -5,6 +5,8 @@ const ProfileAbout = ({
   profile: {
     bio,
     skills,
+    nrComments,
+    nrPosts,
     user: { name }
   }
 }) => (
@@ -25,6 +27,20 @@ const ProfileAbout = ({
         </div>
       ))}
     </div>
+
+    <Fragment>
+      <div className="line"></div>
+      <h2 className="text-primary">Stats</h2>
+
+      <p>
+        Total number of Posts:{' '}
+        <badge className="badge badge-dark"> {nrPosts} </badge>
+      </p>
+      <p>
+        Total number of Comments:{' '}
+        <badge className="badge badge-dark"> {nrComments} </badge>
+      </p>
+    </Fragment>
   </div>
 );
 

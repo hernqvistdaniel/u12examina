@@ -12,16 +12,16 @@ const CommentItem = ({
   deleteComment
 }) => {
   return (
-    <div class="post p-1 my-1">
+    <div className="post p-1 my-1">
       <Link to={`/profile/${user}`}>
         <img style={{ width: '20px' }} src={avatar} alt="" />
         <p>{name}</p>
-        <p class="post-date">
+        <p className="post-date">
           Posted <Moment fromNow>{date}</Moment>{' '}
         </p>
       </Link>
 
-      <p class="my-1">{text}</p>
+      <p className="my-1">{text}</p>
       {!auth.loading && user === auth.user._id && (
         <button
           onClick={e => deleteComment(postId, _id)}
@@ -36,7 +36,7 @@ const CommentItem = ({
 };
 
 CommentItem.propTypes = {
-  postId: PropTypes.number.isRequired,
+  postId: PropTypes.string.isRequired,
   comment: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   deleteComment: PropTypes.func.isRequired

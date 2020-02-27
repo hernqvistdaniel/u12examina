@@ -506,6 +506,10 @@ input[type='date']:disabled {
   align-items: flex-end;
 }
 
+.stats {
+  color: black;
+}
+
 .votesDiv {
   display: flex;
   flex-direction: row;
