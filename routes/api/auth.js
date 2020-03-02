@@ -5,9 +5,11 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
+const { isOnline } = require('./utils');
 
 const User = require('../../models/User');
 const Profile = require('../../models/Profile');
+const UsersOnline = require('../../models/UsersOnline');
 
 // GET api/auth
 // test route
@@ -42,6 +44,8 @@ router.post(
     try {
       let user = await User.findOne({ email });
 
+      let whoIsOnline = await UsersOnline.findOne({ user: user.id });
+      console.log(whoIsOnline);
       if (!user) {
         return res
           .status(400)
@@ -76,6 +80,8 @@ router.post(
       } catch (err) {
         console.error(err.message);
       }
+
+      isOnline(user.id);
 
       jwt.sign(
         payload,

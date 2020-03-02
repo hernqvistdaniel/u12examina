@@ -514,12 +514,13 @@ input[type='date']:disabled {
   display: flex;
   flex-direction: row;
   line-height: 0px;
-  margin: 0;
+  margin: 0 25px;
   font-size: 31px;
 }
 
 .votesDiv > span {
-  line-height: 100%;
+  line-height: 105%;
+  margin: 0 10px;
 }
 
 /* Mobile Styles */

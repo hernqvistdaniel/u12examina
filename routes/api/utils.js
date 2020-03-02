@@ -1,3 +1,5 @@
+const UsersOnline = require('../../models/UsersOnline');
+
 const getNrOfComments = (posts, id) => {
   let numberCom = 0;
 
@@ -23,7 +25,31 @@ const getNrOfLikes = posts => {
   return numberLikes;
 };
 
+const isOnline = async id => {
+  try {
+    let isUserOnline = await UsersOnline.findOne({ user: id });
+    if (isUserOnline) {
+      // update
+      await UsersOnline.findOneAndUpdate(
+        { user: id },
+        { date: Date.now() },
+        { new: true }
+      );
+
+      console.log('user updated');
+    } else {
+      // create
+      user = new UsersOnline({ user: id, date: Date.now() });
+      await user.save();
+      console.log('user created');
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 module.exports = {
   getNrOfComments,
-  getNrOfLikes
+  getNrOfLikes,
+  isOnline
 };
