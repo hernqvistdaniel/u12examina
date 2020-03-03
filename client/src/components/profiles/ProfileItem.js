@@ -8,7 +8,8 @@ const ProfileItem = ({
     status,
     company,
     location,
-    skills
+    skills,
+    isOnline
   }
 }) => {
   return (
@@ -16,6 +17,7 @@ const ProfileItem = ({
       <img src={avatar} alt="" className="round-img" />
       <div>
         <h2>{name}</h2>
+        {isOnline && <i className="fas fa-globe"></i>}
         <p>
           {status} {company && <span> at {company}</span>}
         </p>

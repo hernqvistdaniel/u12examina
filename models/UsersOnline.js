@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const UsersOnlineSchema = new mongoose.Schema({
   user: {
-    type: String
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user'
   },
   date: {
     type: Date,

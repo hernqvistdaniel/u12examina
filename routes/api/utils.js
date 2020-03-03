@@ -48,8 +48,24 @@ const isOnline = async id => {
   }
 };
 
+const setOnlineStatusToProfileObject = (profiles, whoIsOnline) => {
+  let profilesWithOnlineStatus = [];
+
+  profiles.forEach(profile => {
+    whoIsOnline.forEach(user => {
+      if (profile.user._id.toString() === user.user.toString()) {
+        profilesWithOnlineStatus.push({ ...profile, isOnline: true });
+      } else {
+        profilesWithOnlineStatus.push({ ...profile, isOnline: false });
+      }
+    });
+  });
+  return profilesWithOnlineStatus;
+};
+
 module.exports = {
   getNrOfComments,
   getNrOfLikes,
-  isOnline
+  isOnline,
+  setOnlineStatusToProfileObject
 };

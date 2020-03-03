@@ -4,7 +4,11 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const request = require('request');
 const config = require('config');
-const { getNrOfComments, getNrOfLikes } = require('./utils');
+const {
+  getNrOfComments,
+  getNrOfLikes,
+  setOnlineStatusToProfileObject
+} = require('./utils');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Post = require('../../models/Post');
@@ -120,7 +124,15 @@ router.post(
 router.get('/', async (req, res) => {
   try {
     const profiles = await Profile.find().populate('user', ['name', 'avatar']);
-    res.json(profiles);
+    const whoIsOnline = await UsersOnline.find({});
+
+    const profilesAsObjects = profiles.map(profile => profile.toObject());
+
+    const profilesIncludingOnlineStatus = setOnlineStatusToProfileObject(
+      profilesAsObjects,
+      whoIsOnline
+    );
+    res.json(profilesIncludingOnlineStatus);
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error.');
@@ -151,8 +163,6 @@ router.get('/user/:user_id', async (req, res) => {
     const postsByAuthor = await Post.find({ user: req.params.user_id });
 
     const nrLikes = getNrOfLikes(postsByAuthor);
-
-    console.log(nrLikes);
 
     if (!profile) return res.status(400).json({ msg: 'Profile not found.' });
     res.json({ ...profile._doc, nrPosts, nrComments, nrLikes });

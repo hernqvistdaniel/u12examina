@@ -44,8 +44,6 @@ router.post(
     try {
       let user = await User.findOne({ email });
 
-      let whoIsOnline = await UsersOnline.findOne({ user: user.id });
-      console.log(whoIsOnline);
       if (!user) {
         return res
           .status(400)
