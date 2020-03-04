@@ -501,8 +501,10 @@ input[type='date']:disabled {
   margin-bottom: 0.5rem;
 }
 
-.btn-danger {
+.roundedButton {
   border-radius: 50%;
+  width: 50px;
+  height: auto;
 }
 
 .buttonCont {
