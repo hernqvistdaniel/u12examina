@@ -22,6 +22,10 @@ body {
   color: #333;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .postBackground {
   background-color: #fff5cd;
 }
