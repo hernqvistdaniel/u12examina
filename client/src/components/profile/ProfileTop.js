@@ -10,6 +10,7 @@ const ProfileTop = ({
     website,
     social,
     lastLogin,
+    isOnline,
     user: { name, avatar }
   }
 }) => {
@@ -20,6 +21,12 @@ const ProfileTop = ({
       <p className="lead">
         {status} {company && <span> at {company}</span>}
       </p>
+      {isOnline && (
+        <span>
+          <p>User is Online</p>{' '}
+          <i style={{ color: 'green' }} className="fas fa-globe"></i>
+        </span>
+      )}
       <p>
         Last Login:{' '}
         <Moment className="stats" fromNow>
