@@ -4,9 +4,13 @@ Devhub is a social community platform where users can write posts and comments. 
 
 ## Installation
 
-- Clone project
+- ```bash
+  git clone https://github.com/hernqvistdaniel/devhub.git
+  ```
 
-- Enter project directory.
+- ```bash
+  cd devhub
+  ```
 
 - ```bash
   npm install
@@ -17,7 +21,8 @@ Devhub is a social community platform where users can write posts and comments. 
 - ```bash
     npm run dev
   ```
-  You will be notified in the console of the served adress of the application.
+
+You will be notified in the console of the served adress of the application.
 
 ## Contributing
 
