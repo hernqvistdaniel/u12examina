@@ -17,7 +17,14 @@ const ProfileItem = ({
       <img src={avatar} alt="" className="round-img" />
       <div>
         <h2>{name}</h2>
-        {isOnline && <i className="fas fa-globe"></i>}
+        {isOnline && (
+          <div>
+            <i style={{ color: 'green' }} className="fas fa-globe">
+              {' '}
+              Online
+            </i>{' '}
+          </div>
+        )}
         <p>
           {status} {company && <span> at {company}</span>}
         </p>
