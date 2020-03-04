@@ -1,4 +1,4 @@
-# Foobar
+# DevHub
 
 Devhub is a social community platform where users can write posts and comments. See who's online and stuff.
 
@@ -15,8 +15,9 @@ Devhub is a social community platform where users can write posts and comments. 
 ## Usage
 
 - ```bash
-  npm run dev
+    npm run dev
   ```
+  You will be notified in the console of the served adress of the application.
 
 ## Contributing
 
