@@ -4,13 +4,13 @@ Devhub is a social community platform where users can write posts and comments. 
 
 ## Installation
 
-`
+```bash
 git clone https://github.com/hernqvistdaniel/devhub.git
 
 cd devhub
 
 npm install
-`
+```
 
 Add default.json in the config folder with your own credentials:
 
@@ -26,7 +26,7 @@ Add default.json in the config folder with your own credentials:
 ## Usage
 
 ```bash
-   npm run dev
+npm run dev
 ```
 
 You will be notified in the console of the served adress of the application.
