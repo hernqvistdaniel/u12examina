@@ -475,8 +475,15 @@ input[type='date']:disabled {
 .post {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-gap: 2rem;
   align-items: center;
+  margin-bottom: 2rem;
+  border: 1px rounded black;
+}
+
+.post > div > button {
+  width: 55px;
+  justify-items: flex-end;
+  border-radius: 50%;
 }
 
 .post > div:first-child {

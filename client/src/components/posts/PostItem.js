@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
@@ -13,9 +13,20 @@ const PostItem = ({
   post: { _id, text, name, avatar, user, likes, comments, date },
   showActions
 }) => (
-  <div className="post bg-light p-1 my-1">
+  <Link
+    to={`/posts/${_id}`}
+    className="post bg-light p-1 my-1"
+    onClick={e => {
+      e.stopPropagation();
+    }}
+  >
     <div>
-      <Link to={`/profile/${user}`}>
+      <Link
+        to={`/profile/${user}`}
+        onClick={e => {
+          e.stopPropagation();
+        }}
+      >
         <img className="round-img" src={avatar} alt="" />
         <h4>{name}</h4>
       </Link>
@@ -29,18 +40,32 @@ const PostItem = ({
         <div className="buttonCont">
           <span className="votesDiv">
             <i
-              onClick={e => addLike(_id)}
+              onClick={e => {
+                e.preventDefault();
+                e.stopPropagation();
+                addLike(_id);
+              }}
               style={{ cursor: 'pointer' }}
               className="fas fa-plus-square fa-lg"
             ></i>{' '}
             <span>{likes.length}</span>
             <i
-              onClick={e => removeLike(_id)}
+              onClick={e => {
+                e.preventDefault();
+                e.stopPropagation();
+                removeLike(_id);
+              }}
               style={{ cursor: 'pointer' }}
               className="fas fa-minus-square fa-lg"
             ></i>{' '}
           </span>
-          <Link to={`/posts/${_id}`} className="btn btn-primary">
+          <Link
+            to={`/posts/${_id}`}
+            onClick={e => {
+              e.stopPropagation();
+            }}
+            className="btn btn-primary"
+          >
             Comments{' '}
             {comments.length > 0 && (
               <span className="comment-count">{comments.length}</span>
@@ -48,7 +73,11 @@ const PostItem = ({
           </Link>
           {!auth.loading && user === auth.user._id && (
             <button
-              onClick={e => deletePost(_id)}
+              onClick={e => {
+                e.preventDefault();
+                e.stopPropagation();
+                deletePost(_id);
+              }}
               type="button"
               className="btn btn-danger roundedButton"
             >
@@ -58,7 +87,7 @@ const PostItem = ({
         </div>
       )}
     </div>
-  </div>
+  </Link>
 );
 
 PostItem.defaultProps = {

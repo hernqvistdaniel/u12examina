@@ -12,7 +12,7 @@ const CommentItem = ({
   deleteComment
 }) => {
   return (
-    <div className="post p-1 my-1">
+    <div className="post border-primary">
       <Link to={`/profile/${user}`}>
         <img style={{ width: '20px' }} src={avatar} alt="" />
         <p>{name}</p>
@@ -20,17 +20,21 @@ const CommentItem = ({
           Posted <Moment fromNow>{date}</Moment>{' '}
         </p>
       </Link>
-
-      <p className="my-1">{text}</p>
-      {!auth.loading && user === auth.user._id && (
-        <button
-          onClick={e => deleteComment(postId, _id)}
-          type="button"
-          className="btn btn-danger"
-        >
-          <i className="fas fa-times"></i>
-        </button>
-      )}
+      <div>
+        <p className="my-1">{text}</p>
+        {!auth.loading && user === auth.user._id && (
+          <button
+            className="commentDelete"
+            style={{ color: 'red', cursor: 'pointer' }}
+            onClick={e => {
+              e.stopPropagation();
+              deleteComment(postId, _id);
+            }}
+          >
+            delete
+          </button>
+        )}
+      </div>
     </div>
   );
 };
