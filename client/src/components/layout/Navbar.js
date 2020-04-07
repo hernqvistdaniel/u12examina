@@ -8,7 +8,16 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
-        <Link to="/profiles">Users</Link>
+        <Link to="/map">
+          <i className="fas fa-map-marker-alt"></i>{' '}
+          <span className="hide-sm">Map</span>
+        </Link>
+      </li>
+      <li>
+        <Link to="/profiles">
+          <i className="fas fa-users"></i>{' '}
+          <span className="hide-sm">Users</span>
+        </Link>
       </li>
       <li>
         <Link to="/posts">
@@ -18,7 +27,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
       <li>
         <Link to="/dashboard">
-          <i className="fas fa-user"></i>{' '}
+          <i className="fas fa-cog"></i>{' '}
           <span className="hide-sm">Dashboard</span>
         </Link>
       </li>
@@ -34,13 +43,27 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <ul>
       <li>
-        <Link to="/profiles">Users</Link>
+        <Link to="/map">
+          <i className="fas fa-map-marker-alt"></i>{' '}
+          <span className="hide-sm">Map</span>
+        </Link>
       </li>
       <li>
-        <Link to="/register">Register</Link>
+        <Link to="/profiles">
+          <i className="fas fa-user"></i> <span className="hide-sm">Users</span>
+        </Link>
       </li>
       <li>
-        <Link to="/login">Login</Link>
+        <Link to="/register">
+          <i className="fas fa-user-plus"></i>{' '}
+          <span className="hide-sm">Register</span>
+        </Link>
+      </li>
+      <li>
+        <Link to="/login">
+          <i className="fas fa-sign-in-alt"></i>{' '}
+          <span className="hide-sm">Login</span>
+        </Link>
       </li>
     </ul>
   );
@@ -49,7 +72,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <nav className="navbar bg-dark">
       <h1>
         <Link to="/">
-          <i className="fas fa-code"></i> Grädd-it
+          <i className="fas fa-recycle"></i> Rcycld
         </Link>
       </h1>
       {!loading && (

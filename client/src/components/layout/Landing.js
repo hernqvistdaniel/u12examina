@@ -12,7 +12,7 @@ const Landing = ({ isAuthenticated }) => {
     <section className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
-          <h1 className="x-large">Grädd-it</h1>
+          <h1 className="x-large">Rcycld</h1>
           <p className="lead">
             Post or don't post, comment or like or dislike!
           </p>

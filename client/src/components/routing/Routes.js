@@ -14,12 +14,14 @@ import Profile from '../profile/Profile';
 import Posts from '../posts/Posts';
 import Post from '../post/Post';
 import NotFound from '../layout/NotFound';
+import MapComponent from '../map/MapComponent';
 
 const Routes = () => {
   return (
     <section className="container">
       <Alert />
       <Switch>
+        <Route exact path="/map" component={MapComponent} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/profiles" component={Profiles} />
