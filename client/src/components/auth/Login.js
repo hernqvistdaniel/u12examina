@@ -21,11 +21,11 @@ const Login = ({ login, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/profiles" />;
+    return <Redirect to="/map" />;
   }
 
   return (
-    <Fragment>
+    <div className="containPageSize">
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead">
         <i className="fas fa-user"></i> Sign on to your account!
@@ -57,7 +57,7 @@ const Login = ({ login, isAuthenticated }) => {
       <p className="my-1">
         Don't have an account yet? <Link to="/register">Sign up here!</Link>
       </p>
-    </Fragment>
+    </div>
   );
 };
 

@@ -11,6 +11,7 @@ import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
 
 import './App.css';
+import Footer from './components/layout/Footer';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -32,6 +33,7 @@ const App = () => {
           </Switch>
         </Fragment>
       </Router>
+      <Footer />
     </Provider>
   );
 };

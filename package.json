@@ -23,6 +23,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.11",
     "react-scripts": "^3.4.0",
+    "react-sticky-footer": "0.1.0-rc3",
     "request": "^2.88.2"
   },
   "devDependencies": {
