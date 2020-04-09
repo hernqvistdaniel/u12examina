@@ -60,11 +60,18 @@ export class CurrentLocation extends React.Component {
             }
           });
           var service = new google.maps.places.PlacesService(map);
-          service.nearbySearch(
+          service.textSearch(
             {
+              query: [
+                'FTI Station',
+                'Återvinningsstation',
+                'Återvinning',
+                'Återvinningscentral',
+                'Recycling Station',
+                'Recycling'
+              ],
               location: this.state.currentLocation,
-              radius: 5500,
-              type: ['restaurant']
+              radius: 1500
             },
             callback
           );
@@ -77,6 +84,7 @@ export class CurrentLocation extends React.Component {
           }
 
           function createMarker(place) {
+            console.log(place);
             var placeLoc = place.geometry.location;
             var marker = new google.maps.Marker({
               map: map,
@@ -84,8 +92,9 @@ export class CurrentLocation extends React.Component {
             });
 
             google.maps.event.addListener(marker, 'click', function() {
-              infowindow.setContent(place.name);
-              infowindow.open(map, this);
+              console.log(place.name);
+              // infowindow.setContent(place.name);
+              // infowindow.open(map, this);
             });
           }
         });
