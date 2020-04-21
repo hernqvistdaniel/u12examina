@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+const turf = require('@turf/turf');
 
 const mapStyles = {
   map: {
     position: 'absolute',
     width: '50%',
-    height: '50%'
-  }
+    height: '50%',
+  },
 };
 
 export class CurrentLocation extends React.Component {
@@ -17,8 +19,8 @@ export class CurrentLocation extends React.Component {
     this.state = {
       currentLocation: {
         lat,
-        lng
-      }
+        lng,
+      },
     };
   }
 
@@ -47,17 +49,17 @@ export class CurrentLocation extends React.Component {
   componentDidMount() {
     if (this.props.centerAroundCurrentLocation) {
       if (navigator && navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(pos => {
+        navigator.geolocation.getCurrentPosition((pos) => {
           const coords = pos.coords;
           const map = this.map;
           const google = this.props.google;
-          const infowindow = this.props.infoWindow;
+          const infowindow = InfoWindow;
 
           this.setState({
             currentLocation: {
               lat: coords.latitude,
-              lng: coords.longitude
-            }
+              lng: coords.longitude,
+            },
           });
           var service = new google.maps.places.PlacesService(map);
           service.textSearch(
@@ -67,11 +69,9 @@ export class CurrentLocation extends React.Component {
                 'Återvinningsstation',
                 'Återvinning',
                 'Återvinningscentral',
-                'Recycling Station',
-                'Recycling'
               ],
               location: this.state.currentLocation,
-              radius: 1500
+              radius: 500,
             },
             callback
           );
@@ -84,18 +84,56 @@ export class CurrentLocation extends React.Component {
           }
 
           function createMarker(place) {
-            console.log(place);
+            var current = coords;
             var placeLoc = place.geometry.location;
-            var marker = new google.maps.Marker({
-              map: map,
-              position: place.geometry.location
-            });
 
-            google.maps.event.addListener(marker, 'click', function() {
-              console.log(place.name);
-              // infowindow.setContent(place.name);
-              // infowindow.open(map, this);
-            });
+            const lat = placeLoc.lat();
+            const lng = placeLoc.lng();
+            var fromPlace = turf.point([current.latitude, current.longitude]);
+            var toPlace = turf.point([lat, lng]);
+            var options = { units: 'meters' };
+
+            var rawDistance = turf.distance(fromPlace, toPlace, options);
+            var distance = Math.trunc(rawDistance);
+            var time = Math.trunc((distance / 100) * 1.2);
+
+            place.distance = distance;
+            place.time = time;
+
+            if (distance < 2500) {
+              var marker = new google.maps.Marker({
+                map: map,
+                position: placeLoc,
+                icon: {
+                  url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+                  labelOrigin: {
+                    x: 12,
+                    y: -10,
+                  },
+                },
+                label: {
+                  text: place.name,
+                  color: 'black',
+                  fontSize: '12px',
+                  fontWeight: 'bold',
+                },
+              });
+
+              google.maps.event.addListener(marker, 'click', function () {
+                const infowindow = new google.maps.InfoWindow();
+                infowindow.setContent(
+                  `<h1>${place.name}</h1>
+                  <p><b>${place.formatted_address}</b</p>
+                  <br />
+                  <p><i>${place.distance}m ifrån dig</i><p>
+                  <br />
+                  <p><i>ca: ${place.time} min</i></p>
+                  <p>
+                  <img style="color: blue;width: 50px; height: 50px;"src="${place.icon}" />`
+                );
+                infowindow.open(map, this);
+              });
+            }
           }
         });
       }
@@ -118,7 +156,7 @@ export class CurrentLocation extends React.Component {
         {},
         {
           center,
-          zoom
+          zoom,
         }
       );
 
@@ -131,12 +169,12 @@ export class CurrentLocation extends React.Component {
 
     if (!children) return;
 
-    return React.Children.map(children, c => {
+    return React.Children.map(children, (c) => {
       if (!c) return;
       return React.cloneElement(c, {
         map: this.map,
         google: this.props.google,
-        mapCenter: this.state.currentLocation
+        mapCenter: this.state.currentLocation,
       });
     });
   }
@@ -159,9 +197,9 @@ export default CurrentLocation;
 CurrentLocation.defaultProps = {
   zoom: 14,
   initialCenter: {
-    lat: 59.329323,
-    lng: 18.068581
+    lat: 18,
+    lng: 59,
   },
-  centerAroundCurrentLocation: false,
-  visible: true
+  centerAroundCurrentLocation: true,
+  visible: true,
 };

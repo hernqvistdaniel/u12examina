@@ -4,31 +4,26 @@ import { gApiKey } from '../../CONSTANTS';
 
 import CurrentLocation from './CurrentLocation';
 
-const mapStyles = {
-  height: '50%',
-  width: '50%'
-};
-
 export class MapComponent extends Component {
   state = {
     showingInfoWindow: false,
     activeMarker: {},
-    selectedPlace: {}
+    selectedPlace: {},
   };
 
   onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: true,
     });
   };
 
-  onClose = props => {
+  onClose = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: null,
       });
     }
   };
@@ -66,7 +61,7 @@ export class MapComponent extends Component {
           </div>
           <div className="mapText">
             <h1>Info: </h1>
-            <p>Info number 1</p>
+            <p>{this.state.selectedPlace.name}</p>
             <p>Info number 2</p>
             <p>Info number 3</p>
             <p>Info number 4</p>
@@ -79,6 +74,6 @@ export class MapComponent extends Component {
   }
 }
 
-export default GoogleApiWrapper(props => ({
-  apiKey: gApiKey
+export default GoogleApiWrapper((props) => ({
+  apiKey: gApiKey,
 }))(MapComponent);
