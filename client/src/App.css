@@ -157,13 +157,15 @@ img {
 }
 
 .map {
+  position: static;
+  width: 500px;
+  height: 500px;
   margin: 50px 0 0 0;
-  height: 50%;
-  margin-left: -100px;
 }
 
 .mapText {
-  margin: 50px 0 0 0;
+  margin: 50px 0 0 50px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   align-content: left;

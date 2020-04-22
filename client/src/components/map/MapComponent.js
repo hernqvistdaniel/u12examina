@@ -52,6 +52,7 @@ export class MapComponent extends Component {
         <div className="mapContainer">
           <div className="map">
             <CurrentLocation
+              className="map"
               centerAroundCurrentLocation
               google={this.props.google}
               infowindow={this.props.showingInfoWindow}
@@ -63,14 +64,23 @@ export class MapComponent extends Component {
           {place.name ? (
             <div className="mapText">
               <h1>Info: </h1>
-              <p>{place.name}</p>
+              <p>
+                <b>{place.name}</b>
+              </p>
               <p>{place.formatted_address}</p>
-              <p>{place.distance}</p>
-              <p>{place.time}</p>
+              <p>
+                <i>{place.distance}m bort</i>
+              </p>
+              <p>
+                <i>ca: {place.time} minuters promenad</i>
+              </p>
             </div>
           ) : (
             <div className="mapText">
-              <h1>Click on a marker to display info on that station! </h1>
+              <h1>
+                Här är dina närmaste stationer, klicka på en för att få mer
+                information!
+              </h1>
             </div>
           )}
         </div>

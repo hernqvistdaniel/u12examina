@@ -6,8 +6,9 @@ const turf = require('@turf/turf');
 const mapStyles = {
   map: {
     position: 'absolute',
-    width: '50%',
-    height: '50%',
+    width: '500px',
+    height: '500px',
+    border: 'solid 2px green',
   },
 };
 
@@ -122,21 +123,6 @@ export class CurrentLocation extends React.Component {
 
               google.maps.event.addListener(marker, 'click', function () {
                 dataToParent(place);
-                // const infowindow = new google.maps.InfoWindow({
-                //   minwidth: 300,
-                // });
-
-                // infowindow.setContent(
-                //   `<h1>${place.name}</h1>
-                //   <p><b>${place.formatted_address}</b</p>
-                //   <br />
-                //   <p><i>${place.distance}m ifrån dig</i><p>
-                //   <br />
-                //   <p><i>ca: ${place.time} min</i></p>
-                //   <p>
-                //   <img style="color: blue;width: 50px; height: 50px;"src="${place.icon}" />`
-                // );
-                // infowindow.open(map, this);
               });
             }
           }
@@ -202,8 +188,8 @@ export default CurrentLocation;
 CurrentLocation.defaultProps = {
   zoom: 14,
   initialCenter: {
-    lat: 18,
-    lng: 59,
+    lat: 59.334591,
+    lng: 18.06324,
   },
   centerAroundCurrentLocation: true,
   visible: true,
