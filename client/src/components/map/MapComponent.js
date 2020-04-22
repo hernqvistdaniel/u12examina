@@ -16,6 +16,7 @@ export class MapComponent extends Component {
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true,
+      listDataFromChild: null,
     });
   };
 
@@ -28,7 +29,15 @@ export class MapComponent extends Component {
     }
   };
 
+  myCallback = (dataFromChild) => {
+    console.log(dataFromChild);
+    this.setState({
+      selectedPlace: dataFromChild,
+    });
+  };
+
   render() {
+    const place = this.state.selectedPlace;
     return (
       <div className="containPageSize">
         <div className="headline">
@@ -45,29 +54,25 @@ export class MapComponent extends Component {
             <CurrentLocation
               centerAroundCurrentLocation
               google={this.props.google}
-              infowindow={this.state.showingInfoWindow}
+              infowindow={this.props.showingInfoWindow}
+              callbackFromParent={this.myCallback}
             >
-              <Marker onClick={this.onMarkerClick} name={'You are here!   '} />
-              <InfoWindow
-                marker={this.state.activeMarker}
-                visible={this.state.showingInfoWindow}
-                onClose={this.onClose}
-              >
-                <div>
-                  <h3>{this.state.selectedPlace.name}</h3>
-                </div>
-              </InfoWindow>
+              <Marker onClick={this.onMarkerClick} name={'You are here!'} />
             </CurrentLocation>
           </div>
-          <div className="mapText">
-            <h1>Info: </h1>
-            <p>{this.state.selectedPlace.name}</p>
-            <p>Info number 2</p>
-            <p>Info number 3</p>
-            <p>Info number 4</p>
-            <p>Info number 5</p>
-            <p>Info number 6</p>
-          </div>
+          {place.name ? (
+            <div className="mapText">
+              <h1>Info: </h1>
+              <p>{place.name}</p>
+              <p>{place.formatted_address}</p>
+              <p>{place.distance}</p>
+              <p>{place.time}</p>
+            </div>
+          ) : (
+            <div className="mapText">
+              <h1>Click on a marker to display info on that station! </h1>
+            </div>
+          )}
         </div>
       </div>
     );

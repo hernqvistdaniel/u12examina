@@ -54,6 +54,7 @@ export class CurrentLocation extends React.Component {
           const map = this.map;
           const google = this.props.google;
           const infowindow = InfoWindow;
+          const dataToParent = this.props.callbackFromParent;
 
           this.setState({
             currentLocation: {
@@ -94,13 +95,13 @@ export class CurrentLocation extends React.Component {
             var options = { units: 'meters' };
 
             var rawDistance = turf.distance(fromPlace, toPlace, options);
-            var distance = Math.trunc(rawDistance);
-            var time = Math.trunc((distance / 100) * 1.2);
+            var distance = Math.trunc(rawDistance * 0.8);
+            var time = Math.trunc((distance / 100) * 1.1);
 
             place.distance = distance;
             place.time = time;
 
-            if (distance < 2500) {
+            if (distance < 2000) {
               var marker = new google.maps.Marker({
                 map: map,
                 position: placeLoc,
@@ -120,18 +121,22 @@ export class CurrentLocation extends React.Component {
               });
 
               google.maps.event.addListener(marker, 'click', function () {
-                const infowindow = new google.maps.InfoWindow();
-                infowindow.setContent(
-                  `<h1>${place.name}</h1>
-                  <p><b>${place.formatted_address}</b</p>
-                  <br />
-                  <p><i>${place.distance}m ifrån dig</i><p>
-                  <br />
-                  <p><i>ca: ${place.time} min</i></p>
-                  <p>
-                  <img style="color: blue;width: 50px; height: 50px;"src="${place.icon}" />`
-                );
-                infowindow.open(map, this);
+                dataToParent(place);
+                // const infowindow = new google.maps.InfoWindow({
+                //   minwidth: 300,
+                // });
+
+                // infowindow.setContent(
+                //   `<h1>${place.name}</h1>
+                //   <p><b>${place.formatted_address}</b</p>
+                //   <br />
+                //   <p><i>${place.distance}m ifrån dig</i><p>
+                //   <br />
+                //   <p><i>ca: ${place.time} min</i></p>
+                //   <p>
+                //   <img style="color: blue;width: 50px; height: 50px;"src="${place.icon}" />`
+                // );
+                // infowindow.open(map, this);
               });
             }
           }

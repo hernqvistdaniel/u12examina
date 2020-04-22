@@ -13,9 +13,7 @@ const Landing = ({ isAuthenticated }) => {
       <div className="dark-overlay">
         <div className="landing-inner">
           <h1 className="x-large">Rcycld</h1>
-          <p className="lead">
-            Post or don't post, comment or like or dislike!
-          </p>
+          <p className="lead">Se vart din närmaste station är!</p>
           <div className="buttons">
             <Link to="/register" className="btn btn-primary">
               Register
@@ -31,11 +29,11 @@ const Landing = ({ isAuthenticated }) => {
 };
 
 Landing.propTypes = {
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps)(Landing);
