@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import { gApiKey } from '../../CONSTANTS';
+import recyclePicture from '../../img/recyclepic.jpeg';
 
 import CurrentLocation from './CurrentLocation';
 
@@ -62,25 +63,47 @@ export class MapComponent extends Component {
             </CurrentLocation>
           </div>
           {place.name ? (
-            <div className="mapText">
-              <h1>Info: </h1>
-              <p>
-                <b>{place.name}</b>
-              </p>
-              <p>{place.formatted_address}</p>
-              <p>
-                <i>{place.distance}m bort</i>
-              </p>
-              <p>
-                <i>ca: {place.time} minuters promenad</i>
-              </p>
+            <div className="mapRightBox">
+              <div className="mapText">
+                <h1>Info: </h1>
+                {place.name && (
+                  <p>
+                    <b>{place.name}</b>
+                  </p>
+                )}
+                {place.formatted_address && <p>{place.formatted_address}</p>}
+                {place.distance && (
+                  <p>
+                    <i>{place.distance}m bort</i>
+                  </p>
+                )}
+                {place.time && (
+                  <p>
+                    <i>ca: {place.time} minuters promenad</i>
+                  </p>
+                )}
+                <p>
+                  Ifall du behöver rapportera ett problem med en station kan du
+                  göra det på FTI:s hemsida:
+                </p>
+                <a
+                  href="https://webapp.ftiab.se/Forms/LeaveOpinion.aspx"
+                  target="_blank"
+                >
+                  <button>Klicka här!</button>
+                </a>
+              </div>
+              <img src={recyclePicture} className="recycleImage" />
             </div>
           ) : (
-            <div className="mapText">
-              <h1>
-                Här är dina närmaste stationer, klicka på en för att få mer
-                information!
-              </h1>
+            <div className="mapRightBox">
+              <div className="mapText">
+                <h1>
+                  Här är dina närmaste stationer, klicka på en för att få mer
+                  information!
+                </h1>
+              </div>
+              <img src={recyclePicture} className="recycleImage" />
             </div>
           )}
         </div>

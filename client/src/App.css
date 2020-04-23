@@ -146,10 +146,21 @@ img {
   font-size: 35px;
 }
 
+.mapRightBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .mapContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.recycleImage {
+  width: 270px;
+  margin-left: 50px;
 }
 
 .containPageSize {
