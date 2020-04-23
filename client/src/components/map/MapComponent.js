@@ -59,7 +59,7 @@ export class MapComponent extends Component {
               infowindow={this.props.showingInfoWindow}
               callbackFromParent={this.myCallback}
             >
-              <Marker onClick={this.onMarkerClick} name={'You are here!'} />
+              <Marker onClick={this.onMarkerClick} name={'Här är du!'} />
             </CurrentLocation>
           </div>
           {place.name ? (
@@ -82,16 +82,20 @@ export class MapComponent extends Component {
                     <i>ca: {place.time} minuters promenad</i>
                   </p>
                 )}
-                <p>
-                  Ifall du behöver rapportera ett problem med en station kan du
-                  göra det på FTI:s hemsida:
-                </p>
-                <a
-                  href="https://webapp.ftiab.se/Forms/LeaveOpinion.aspx"
-                  target="_blank"
-                >
-                  <button>Klicka här!</button>
-                </a>
+                {place.formatted_address && (
+                  <div>
+                    <p>
+                      Ifall du behöver rapportera ett problem med en station kan
+                      du göra det på FTI:s hemsida:
+                    </p>
+                    <a
+                      href="https://webapp.ftiab.se/Forms/LeaveOpinion.aspx"
+                      target="_blank"
+                    >
+                      <button>Klicka här!</button>
+                    </a>
+                  </div>
+                )}
               </div>
               <img src={recyclePicture} className="recycleImage" />
             </div>

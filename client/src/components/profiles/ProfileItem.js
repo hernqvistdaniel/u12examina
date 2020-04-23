@@ -9,12 +9,11 @@ const ProfileItem = ({
     company,
     location,
     skills,
-    isOnline
-  }
+    isOnline,
+  },
 }) => {
   return (
-    <div className="profile bg-light">
-      <img src={avatar} alt="" className="round-img" />
+    <div className="">
       <div>
         <h2>{name}</h2>
         {isOnline && (
@@ -45,7 +44,7 @@ const ProfileItem = ({
 };
 
 ProfileItem.propTypes = {
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
 export default ProfileItem;

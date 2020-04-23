@@ -375,6 +375,7 @@ button {
 
 .footer {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0.7rem 2rem;
@@ -384,6 +385,19 @@ button {
   bottom: 0;
   border-top: solid 1px var(--primary-color);
   opacity: 0.9;
+}
+
+.footerContent {
+  margin: 0 150px 0 150px;
+  padding: 10px 25px 10px 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footerItem {
+  color: black;
+  width: 200px;
 }
 
 .navbar ul {
