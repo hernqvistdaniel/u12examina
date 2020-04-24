@@ -70,7 +70,6 @@ router.post(
         });
 
         if (!profile) {
-          console.log('couldnt fetch');
         } else {
           profile.lastLogin = Date.now();
           await profile.save();
