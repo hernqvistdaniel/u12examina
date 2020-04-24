@@ -11,19 +11,19 @@ const PostItem = ({
   removeLike,
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date },
-  showActions
+  showActions,
 }) => (
   <Link
     to={`/posts/${_id}`}
     className="post bg-light p-1 my-1"
-    onClick={e => {
+    onClick={(e) => {
       e.stopPropagation();
     }}
   >
     <div>
       <Link
         to={`/profile/${user}`}
-        onClick={e => {
+        onClick={(e) => {
           e.stopPropagation();
         }}
       >
@@ -34,13 +34,13 @@ const PostItem = ({
     <div>
       <p className="my-1">{text}</p>
       <p className="post-date">
-        Posted <Moment fromNow>{date}</Moment>
+        Skrivet <Moment fromNow>{date}</Moment>
       </p>
       {showActions && (
         <div className="buttonCont">
           <span className="votesDiv">
             <i
-              onClick={e => {
+              onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 addLike(_id);
@@ -50,7 +50,7 @@ const PostItem = ({
             ></i>{' '}
             <span>{likes.length}</span>
             <i
-              onClick={e => {
+              onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 removeLike(_id);
@@ -61,19 +61,19 @@ const PostItem = ({
           </span>
           <Link
             to={`/posts/${_id}`}
-            onClick={e => {
+            onClick={(e) => {
               e.stopPropagation();
             }}
             className="btn btn-primary"
           >
-            Comments{' '}
+            Kommentarer{' '}
             {comments.length > 0 && (
               <span className="comment-count">{comments.length}</span>
             )}
           </Link>
           {!auth.loading && user === auth.user._id && (
             <button
-              onClick={e => {
+              onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 deletePost(_id);
@@ -91,7 +91,7 @@ const PostItem = ({
 );
 
 PostItem.defaultProps = {
-  showActions: true
+  showActions: true,
 };
 
 PostItem.propTypes = {
@@ -99,15 +99,15 @@ PostItem.propTypes = {
   auth: PropTypes.object.isRequired,
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
-  deletePost: PropTypes.func.isRequired
+  deletePost: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, {
   addLike,
   removeLike,
-  deletePost
+  deletePost,
 })(PostItem);

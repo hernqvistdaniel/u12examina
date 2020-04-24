@@ -17,7 +17,7 @@ const CreateProfile = ({ createProfile, history }) => {
     facebook: '',
     linkedin: '',
     youtube: '',
-    instagram: ''
+    instagram: '',
   });
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -34,80 +34,69 @@ const CreateProfile = ({ createProfile, history }) => {
     facebook,
     linkedin,
     youtube,
-    instagram
+    instagram,
   } = formData;
 
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     createProfile(formData, history);
   };
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Create Your Profile</h1>
+      <h1 className="large text-primary">Skapa din profil!</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Let's get some information to make your
-        profile stand out
+        <i className="fas fa-user"></i> Lägg till information om dig själv och
+        gör din profil mer personlig!
       </p>
-      <small>* = required field</small>
-      <form className="form" onSubmit={e => onSubmit(e)}>
+      <small>* = Obligatoriska fält!</small>
+      <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
-          <select name="status" value={status} onChange={e => onChange(e)}>
-            <option value="0">* Select Professional Status</option>
-            <option value="Developer">Developer</option>
-            <option value="Junior Developer">Junior Developer</option>
-            <option value="Senior Developer">Senior Developer</option>
-            <option value="Manager">Manager</option>
-            <option value="Student or Learning">Student or Learning</option>
-            <option value="Instructor">Instructor or Teacher</option>
-            <option value="Intern">Intern</option>
-            <option value="Other">Other</option>
+          <select name="status" value={status} onChange={(e) => onChange(e)}>
+            <option value="0">* Sätt en status</option>
+            <option value="Trädkramare">Trädkramare</option>
+            <option value="Återvinnaren">Återvinnaren</option>
+            <option value="Miljöpartisten">Miljöpartisten</option>
           </select>
           <small className="form-text">
-            Give us an idea of where you are at in your career
+            Berätta kort om vad du jobbar med just nu
           </small>
         </div>
         <div className="form-group">
           <input
             type="text"
-            placeholder="Company"
+            placeholder="Företag"
             name="company"
             value={company}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
-          <small className="form-text">
-            Could be your own company or one you work for
-          </small>
+          <small className="form-text">Företag</small>
         </div>
         <div className="form-group">
           <input
             type="text"
-            placeholder="Website"
+            placeholder="Hemsida"
             name="website"
             value={website}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
-          <small className="form-text">
-            Could be your own or a company website
-          </small>
+          <small className="form-text">Tipsa om en valfri hemsida</small>
         </div>
         <div className="form-group">
           <input
             type="text"
-            placeholder="Location"
+            placeholder="Plats"
             name="location"
             value={location}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
-          <small className="form-text">
-            City & state suggested (eg. Boston, MA)
-          </small>
+          <small className="form-text">Vilken stad du huserar i</small>
         </div>
         <div className="form-group">
           <input
@@ -115,33 +104,21 @@ const CreateProfile = ({ createProfile, history }) => {
             placeholder="* Skills"
             name="skills"
             value={skills}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
           <small className="form-text">
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Github Username"
-            name="githubusername"
-            value={githubusername}
-            onChange={e => onChange(e)}
-          />
-          <small className="form-text">
-            If you want your latest repos and a Github link, include your
-            username
+            Skriv några saker du är bra på, separera med komma! (Återvinna,
+            Matlagning, Löpning) osv
           </small>
         </div>
         <div className="form-group">
           <textarea
-            placeholder="A short bio of yourself"
+            placeholder="Kort presentation"
             name="bio"
             value={bio}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           ></textarea>
-          <small className="form-text">Tell us a little about yourself</small>
+          <small className="form-text">En kort presentation om dig själv</small>
         </div>
 
         <div className="my-2">
@@ -150,7 +127,7 @@ const CreateProfile = ({ createProfile, history }) => {
             type="button"
             className="btn btn-light"
           >
-            Add Social Network Links
+            Lägg till länkar till Sociala medier.
           </button>
           <span>Optional</span>
         </div>
@@ -163,7 +140,7 @@ const CreateProfile = ({ createProfile, history }) => {
                 placeholder="Twitter URL"
                 name="twitter"
                 value={twitter}
-                onChange={e => onChange(e)}
+                onChange={(e) => onChange(e)}
               />
             </div>
 
@@ -174,7 +151,7 @@ const CreateProfile = ({ createProfile, history }) => {
                 placeholder="Facebook URL"
                 name="facebook"
                 value={facebook}
-                onChange={e => onChange(e)}
+                onChange={(e) => onChange(e)}
               />
             </div>
 
@@ -185,7 +162,7 @@ const CreateProfile = ({ createProfile, history }) => {
                 placeholder="YouTube URL"
                 name="youtube"
                 value={youtube}
-                onChange={e => onChange(e)}
+                onChange={(e) => onChange(e)}
               />
             </div>
 
@@ -196,7 +173,7 @@ const CreateProfile = ({ createProfile, history }) => {
                 placeholder="Linkedin URL"
                 name="linkedin"
                 value={linkedin}
-                onChange={e => onChange(e)}
+                onChange={(e) => onChange(e)}
               />
             </div>
 
@@ -207,7 +184,7 @@ const CreateProfile = ({ createProfile, history }) => {
                 placeholder="Instagram URL"
                 name="instagram"
                 value={instagram}
-                onChange={e => onChange(e)}
+                onChange={(e) => onChange(e)}
               />
             </div>
           </Fragment>
@@ -215,7 +192,7 @@ const CreateProfile = ({ createProfile, history }) => {
 
         <input type="submit" className="btn btn-primary my-1" />
         <Link className="btn btn-light my-1" to="/dashboard">
-          Go Back
+          Gå tillbaka.
         </Link>
       </form>
     </Fragment>
@@ -223,7 +200,7 @@ const CreateProfile = ({ createProfile, history }) => {
 };
 
 CreateProfile.propTypes = {
-  createProfile: PropTypes.func.isRequired
+  createProfile: PropTypes.func.isRequired,
 };
 
 export default connect(null, { createProfile })(withRouter(CreateProfile));

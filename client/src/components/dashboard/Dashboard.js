@@ -12,7 +12,7 @@ const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
   auth: { user },
-  profile: { profile, loading }
+  profile: { profile, loading },
 }) => {
   useEffect(() => {
     getCurrentProfile();
@@ -22,9 +22,9 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className="large text-primary">Dashboard</h1>
+      <h1 className="large text-primary">Profil</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Welcome {user && user.name}
+        <i className="fas fa-user"></i> Välkommen {user && user.name}
       </p>
       {profile !== null ? (
         <Fragment>
@@ -34,15 +34,15 @@ const Dashboard = ({
 
           <div>
             <button className="btn btn-danger" onClick={() => deleteAccount()}>
-              <i className="fas fa-user"></i> Delete my Account!
+              <i className="fas fa-user"></i> Radera mitt konto!
             </button>
           </div>
         </Fragment>
       ) : (
         <Fragment>
-          <p>You have not yet setup a profile, please add some info</p>
+          <p>Du har inte lagt till något i din profil.</p>
           <Link to="/create-profile" className="btn btn-primary my-1">
-            Create Profile
+            Skapa Profil
           </Link>
         </Fragment>
       )}
@@ -54,12 +54,12 @@ Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  profile: state.profile
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(

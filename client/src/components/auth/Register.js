@@ -10,15 +10,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     name: '',
     email: '',
     password: '',
-    password2: ''
+    password2: '',
   });
 
   const { name, email, password, password2 } = formData;
 
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
       setAlert('Password does not match', 'danger');
@@ -26,7 +26,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       register({
         name,
         email,
-        password
+        password,
       });
     }
   };
@@ -37,59 +37,55 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
   return (
     <div className="containPageSize">
-      <h1 className="large text-primary">Sign Up</h1>
+      <h1 className="large text-primary">Registrera</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Create Your Account
+        <i className="fas fa-user"></i> Skapa ditt konto
       </p>
-      <form className="form" onSubmit={e => onSubmit(e)}>
+      <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
           <input
             type="text"
-            placeholder="Name"
+            placeholder="Namn"
             name="name"
             value={name}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             required
           />
         </div>
         <div className="form-group">
           <input
             type="email"
-            placeholder="Email Address"
+            placeholder="Email"
             name="email"
             value={email}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             required
           />
-          <small className="form-text">
-            This site uses Gravatar so if you want a profile image, use a
-            Gravatar email
-          </small>
         </div>
         <div className="form-group">
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Lösenord"
             name="password"
             minLength="6"
             value={password}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
         <div className="form-group">
           <input
             type="password"
-            placeholder="Confirm Password"
+            placeholder="Ditt lösenord igen"
             name="password2"
             minLength="6"
             value={password2}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Register" />
+        <input type="submit" className="btn btn-primary" value="Registrera" />
       </form>
       <p className="my-1">
-        Already have an account? <Link to="/login">Sign in here!</Link>
+        Har du redan ett konto? <Link to="/login">Logga in här!</Link>
       </p>
     </div>
   );
@@ -98,11 +94,11 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { setAlert, register })(Register);

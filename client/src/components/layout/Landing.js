@@ -16,10 +16,10 @@ const Landing = ({ isAuthenticated }) => {
           <p className="lead">Se vart din närmaste station är!</p>
           <div className="buttons">
             <Link to="/register" className="btn btn-primary">
-              Register
+              Registrera
             </Link>
             <Link to="/login" className="btn btn-light">
-              Login
+              Logga in
             </Link>
           </div>
         </div>

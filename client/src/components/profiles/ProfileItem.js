@@ -20,7 +20,7 @@ const ProfileItem = ({
           <div>
             <i style={{ color: 'green' }} className="fas fa-globe">
               {' '}
-              Online
+              Online just nu
             </i>{' '}
           </div>
         )}
@@ -29,7 +29,7 @@ const ProfileItem = ({
         </p>
         <p className="my-1">{location && <span>{}</span>}</p>
         <Link to={`/profile/${_id}`} className="btn btn-primary">
-          View Profile
+          Profil
         </Link>
       </div>
       <ul>

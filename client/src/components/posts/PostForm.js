@@ -10,7 +10,7 @@ const PostForm = ({ addPost }) => {
     <div className="post-form">
       <form
         className="form my-1"
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault();
           addPost({ text });
           setText('');
@@ -20,19 +20,19 @@ const PostForm = ({ addPost }) => {
           name="text"
           cols="30"
           rows="5"
-          placeholder="Create a post"
+          placeholder="Skapa ett inlägg"
           value={text}
-          onChange={e => setText(e.target.value)}
+          onChange={(e) => setText(e.target.value)}
           required
         ></textarea>
-        <input type="submit" className="btn btn-dark my-1" value="Submit" />
+        <input type="submit" className="btn btn-dark my-1" value="Skicka" />
       </form>
     </div>
   );
 };
 
 PostForm.propTypes = {
-  addPost: PropTypes.func.isRequired
+  addPost: PropTypes.func.isRequired,
 };
 
 export default connect(null, { addPost })(PostForm);

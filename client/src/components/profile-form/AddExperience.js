@@ -12,27 +12,27 @@ const AddExperience = ({ addExperience, history }) => {
     from: '',
     to: '',
     current: false,
-    description: ''
+    description: '',
   });
 
   const [toDateDisabled, toggleDisabled] = useState(false);
 
   const { company, title, location, from, to, current, description } = formData;
 
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Add An Experience</h1>
+      <h1 className="large text-primary">Lägg till en erfarenhet</h1>
       <p className="lead">
-        <i className="fas fa-code-branch"></i> Add any developer/programming
-        positions that you have had in the past
+        <i className="fas fa-code-branch"></i> Lägg till arbetslivserfarenheter
+        här
       </p>
-      <small>* = required field</small>
+      <small>* = obligatoriska fält</small>
       <form
         className="form"
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault();
           addExperience(formData, history);
         }}
@@ -40,39 +40,39 @@ const AddExperience = ({ addExperience, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Job Title"
+            placeholder="* Titel"
             name="title"
             value={title}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             required
           />
         </div>
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Company"
+            placeholder="* Företag"
             name="company"
             value={company}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             required
           />
         </div>
         <div className="form-group">
           <input
             type="text"
-            placeholder="Location"
+            placeholder="Plats"
             name="location"
             value={location}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
         <div className="form-group">
-          <h4>From Date</h4>
+          <h4>Anställd fr.o.m</h4>
           <input
             type="date"
             name="from"
             value={from}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
         <div className="form-group">
@@ -82,21 +82,21 @@ const AddExperience = ({ addExperience, history }) => {
               name="current"
               checked={current}
               value={current}
-              onChange={e => {
+              onChange={(e) => {
                 setFormData({ ...formData, current: !current });
                 toggleDisabled(!toDateDisabled);
               }}
             />{' '}
-            Current Job
+            Jobbar här fortfarande
           </p>
         </div>
         <div className="form-group">
-          <h4>To Date</h4>
+          <h4>Anställd t.o.m</h4>
           <input
             type="date"
             name="to"
             value={to}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             disabled={toDateDisabled ? 'disabled' : ''}
           />
         </div>
@@ -105,14 +105,14 @@ const AddExperience = ({ addExperience, history }) => {
             name="description"
             cols="30"
             rows="5"
-            placeholder="Job Description"
+            placeholder="Om jobbet"
             value={description}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           ></textarea>
         </div>
         <input type="submit" className="btn btn-primary my-1" />
         <a className="btn btn-light my-1" href="dashboard.html">
-          Go Back
+          Gå tillbaka.
         </a>
       </form>
     </Fragment>
@@ -120,7 +120,7 @@ const AddExperience = ({ addExperience, history }) => {
 };
 
 AddExperience.propTypes = {
-  addExperience: PropTypes.func.isRequired
+  addExperience: PropTypes.func.isRequired,
 };
 
 export default connect(null, { addExperience })(withRouter(AddExperience));

@@ -7,7 +7,7 @@ const Footer = () => {
       className="footer"
       bottomThreshold={50}
       normalStyles={{
-        backgroundColor: '#999999',
+        backgroundColor: '#42474c',
         padding: '2rem',
         visibility: 'visible',
       }}

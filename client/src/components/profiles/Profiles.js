@@ -15,18 +15,18 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Spinner />
       ) : (
         <div className="containPageSize">
-          <h1 className="large text-primary">Users</h1>
+          <h1 className="large text-primary">Användare</h1>
           <p className="lead">
-            <i className="fas fa-users"></i> Browse and connect with other
-            people!
+            <i className="fas fa-users"></i> Spana in och connecta med andra
+            användare!
           </p>
           <div className="profiles">
             {profiles.length > 0 ? (
-              profiles.map(profile => (
+              profiles.map((profile) => (
                 <ProfileItem key={profile._id} profile={profile} />
               ))
             ) : (
-              <h4>No profiles found...</h4>
+              <h4>Hittade inga profiler..</h4>
             )}
           </div>
         </div>
@@ -37,11 +37,11 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
 
 Profiles.propTypes = {
   getProfiles: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  profile: state.profile
+const mapStateToProps = (state) => ({
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, { getProfiles })(Profiles);

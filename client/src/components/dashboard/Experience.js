@@ -6,14 +6,14 @@ import { deleteExperience } from '../../actions/profile';
 import { connect } from 'react-redux';
 
 const Experience = ({ experience, deleteExperience }) => {
-  const experiences = experience.map(exp => (
+  const experiences = experience.map((exp) => (
     <tr key={exp._id}>
       <td>{exp.company}</td>
       <td className="hide-sm">{exp.title}</td>
       <td>
         <Moment format="YYYY/MM/DD">{exp.from}</Moment> -{' '}
         {exp.to === null ? (
-          ' Now'
+          ' Nuvarande'
         ) : (
           <Moment format="YYYY/MM/DD">{exp.to}</Moment>
         )}
@@ -23,7 +23,7 @@ const Experience = ({ experience, deleteExperience }) => {
           onClick={() => deleteExperience(exp._id)}
           className="btn btn-danger"
         >
-          Delete
+          Radera
         </button>
       </td>
     </tr>
@@ -31,13 +31,13 @@ const Experience = ({ experience, deleteExperience }) => {
 
   return (
     <Fragment>
-      <h2 className="my-2">Experience Credentials</h2>
+      <h2 className="my-2">Erfarenheter</h2>
       <table className="table">
         <thead>
           <tr>
-            <th>Company</th>
-            <th className="hide-sm">Title</th>
-            <th className="hide-sm">Years</th>
+            <th>Företag</th>
+            <th className="hide-sm">Jobbtitel</th>
+            <th className="hide-sm">År</th>
             <th />
           </tr>
         </thead>
@@ -49,7 +49,7 @@ const Experience = ({ experience, deleteExperience }) => {
 
 Experience.propTypes = {
   experience: PropTypes.array.isRequired,
-  deleteExperience: PropTypes.func.isRequired
+  deleteExperience: PropTypes.func.isRequired,
 };
 
 export default connect(null, { deleteExperience })(Experience);

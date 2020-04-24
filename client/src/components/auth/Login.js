@@ -7,15 +7,15 @@ import { login } from '../../actions/auth';
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
   });
 
   const { email, password } = formData;
 
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     login(email, password);
   };
@@ -26,36 +26,36 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <div className="containPageSize">
-      <h1 className="large text-primary">Sign In</h1>
+      <h1 className="large text-primary">Logga in</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Sign on to your account!
+        <i className="fas fa-user"></i> Logga in på ditt konto!
       </p>
-      <form className="form" onSubmit={e => onSubmit(e)}>
+      <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
           <input
             type="email"
-            placeholder="Email Address"
+            placeholder="Email"
             name="email"
             value={email}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             required
           />
         </div>
         <div className="form-group">
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Lösenord"
             name="password"
             minLength="6"
             value={password}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
 
-        <input type="submit" className="btn btn-primary" value="Login" />
+        <input type="submit" className="btn btn-primary" value="Logga in" />
       </form>
       <p className="my-1">
-        Don't have an account yet? <Link to="/register">Sign up here!</Link>
+        Har du inget konto? <Link to="/register">Registrera dig här!</Link>
       </p>
     </div>
   );
@@ -63,11 +63,11 @@ const Login = ({ login, isAuthenticated }) => {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  iAuthenticated: PropTypes.bool
+  iAuthenticated: PropTypes.bool,
 };
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { login })(Login);

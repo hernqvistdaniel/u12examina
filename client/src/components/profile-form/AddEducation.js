@@ -12,7 +12,7 @@ const AddEducation = ({ addEducation, history }) => {
     from: '',
     to: '',
     current: false,
-    description: ''
+    description: '',
   });
 
   const [toDateDisabled, toggleDisabled] = useState(false);
@@ -24,23 +24,23 @@ const AddEducation = ({ addEducation, history }) => {
     from,
     to,
     current,
-    description
+    description,
   } = formData;
 
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Add An Education</h1>
+      <h1 className="large text-primary">Lägg till utbildning</h1>
       <p className="lead">
-        <i className="fas fa-code-branch"></i> Add any courses or schools you've
-        attended!
+        <i className="fas fa-code-branch"></i> Lägg till utbildningar eller
+        kurser du studerat!
       </p>
-      <small>* = required field</small>
+      <small>* = detta fält måste vara ifyllt.</small>
       <form
         className="form"
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault();
           addEducation(formData, history);
         }}
@@ -48,39 +48,39 @@ const AddEducation = ({ addEducation, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="* School / Course"
+            placeholder="* Skola / Kurs"
             name="school"
             value={school}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             required
           />
         </div>
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Degree / Certificate"
+            placeholder="* Examen / Diplom"
             name="degree"
             value={degree}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             required
           />
         </div>
         <div className="form-group">
           <input
             type="text"
-            placeholder="Field of Study"
+            placeholder="Ämnesområde"
             name="fieldofstudy"
             value={fieldofstudy}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
         <div className="form-group">
-          <h4>From Date</h4>
+          <h4>Började kursen</h4>
           <input
             type="date"
             name="from"
             value={from}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
         <div className="form-group">
@@ -90,21 +90,21 @@ const AddEducation = ({ addEducation, history }) => {
               name="current"
               checked={current}
               value={current}
-              onChange={e => {
+              onChange={(e) => {
                 setFormData({ ...formData, current: !current });
                 toggleDisabled(!toDateDisabled);
               }}
             />{' '}
-            Currently studying
+            Studerar detta nu.
           </p>
         </div>
         <div className="form-group">
-          <h4>To Date</h4>
+          <h4>Avslutade kursen</h4>
           <input
             type="date"
             name="to"
             value={to}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             disabled={toDateDisabled ? 'disabled' : ''}
           />
         </div>
@@ -113,14 +113,14 @@ const AddEducation = ({ addEducation, history }) => {
             name="description"
             cols="30"
             rows="5"
-            placeholder="Course Description"
+            placeholder="Om kursen"
             value={description}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           ></textarea>
         </div>
         <input type="submit" className="btn btn-primary my-1" />
         <a className="btn btn-light my-1" href="dashboard.html">
-          Go Back
+          Gå tillbaka
         </a>
       </form>
     </Fragment>
@@ -128,7 +128,7 @@ const AddEducation = ({ addEducation, history }) => {
 };
 
 AddEducation.propTypes = {
-  addEducation: PropTypes.func.isRequired
+  addEducation: PropTypes.func.isRequired,
 };
 
 export default connect(null, { addEducation })(withRouter(AddEducation));

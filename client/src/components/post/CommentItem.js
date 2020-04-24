@@ -9,7 +9,7 @@ const CommentItem = ({
   postId,
   comment: { _id, text, name, avatar, user, date },
   auth,
-  deleteComment
+  deleteComment,
 }) => {
   return (
     <div className="post border-primary">
@@ -17,7 +17,7 @@ const CommentItem = ({
         <img style={{ width: '20px' }} src={avatar} alt="" />
         <p>{name}</p>
         <p className="post-date">
-          Posted <Moment fromNow>{date}</Moment>{' '}
+          Skrivet <Moment fromNow>{date}</Moment>{' '}
         </p>
       </Link>
       <div>
@@ -26,12 +26,12 @@ const CommentItem = ({
           <button
             className="commentDelete"
             style={{ color: 'red', cursor: 'pointer' }}
-            onClick={e => {
+            onClick={(e) => {
               e.stopPropagation();
               deleteComment(postId, _id);
             }}
           >
-            delete
+            Ta bort
           </button>
         )}
       </div>
@@ -43,11 +43,11 @@ CommentItem.propTypes = {
   postId: PropTypes.string.isRequired,
   comment: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
-  deleteComment: PropTypes.func.isRequired
+  deleteComment: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, { deleteComment })(CommentItem);

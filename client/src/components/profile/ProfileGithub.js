@@ -8,7 +8,7 @@ const ProfileGithub = ({
   username,
   getGithubRepos,
   repos,
-  profile: { loading }
+  profile: { loading },
 }) => {
   useEffect(() => {
     getGithubRepos(username);
@@ -21,7 +21,7 @@ const ProfileGithub = ({
       ) : !repos.length > 0 ? (
         <p>No repos connected to this account.</p>
       ) : (
-        repos.map(repo => {
+        repos.map((repo) => {
           return (
             <div key={repo.id} className="repo bg-white p-1 my-1">
               <div>
@@ -61,12 +61,12 @@ ProfileGithub.propTypes = {
   getGithubRepos: PropTypes.func.isRequired,
   repos: PropTypes.array.isRequired,
   username: PropTypes.string.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   repos: state.profile.repos,
-  profile: state.profile
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, { getGithubRepos })(ProfileGithub);

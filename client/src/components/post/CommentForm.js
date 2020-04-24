@@ -10,7 +10,7 @@ const CommentForm = ({ postId, addComment }) => {
     <div className="post-form">
       <form
         className="form my-1"
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault();
           addComment(postId, { text });
           setText('');
@@ -20,19 +20,19 @@ const CommentForm = ({ postId, addComment }) => {
           name="text"
           cols="25"
           rows="3"
-          placeholder="Leave a comment..."
+          placeholder="Kommentera..."
           value={text}
-          onChange={e => setText(e.target.value)}
+          onChange={(e) => setText(e.target.value)}
           required
         ></textarea>
-        <input type="submit" className="btn btn-dark my-1" value="Submit" />
+        <input type="submit" className="btn btn-dark my-1" value="Skicka" />
       </form>
     </div>
   );
 };
 
 CommentForm.propTypes = {
-  addComment: PropTypes.func.isRequired
+  addComment: PropTypes.func.isRequired,
 };
 
 export default connect(null, { addComment })(CommentForm);

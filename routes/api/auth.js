@@ -31,7 +31,7 @@ router.post(
   '/',
   [
     check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Please enter your password.').exists()
+    check('password', 'Please enter your password.').exists(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -60,13 +60,13 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id
-        }
+          id: user.id,
+        },
       };
 
       try {
         const profile = await Profile.findOne({
-          user: user.id
+          user: user.id,
         });
 
         if (!profile) {

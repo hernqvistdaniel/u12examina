@@ -15,7 +15,6 @@ import Posts from '../posts/Posts';
 import Post from '../post/Post';
 import NotFound from '../layout/NotFound';
 import MapComponent from '../map/MapComponent';
-import CurrentLocation from '../map/CurrentLocation';
 
 const Routes = () => {
   return (

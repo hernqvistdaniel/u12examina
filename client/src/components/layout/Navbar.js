@@ -16,25 +16,24 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <li>
         <Link to="/profiles">
           <i className="fas fa-users"></i>{' '}
-          <span className="hide-sm">Users</span>
+          <span className="hide-sm">Användare</span>
         </Link>
       </li>
       <li>
         <Link to="/posts">
           <i className="fas fa-envelope"></i>{' '}
-          <span className="hide-sm">Posts</span>
+          <span className="hide-sm">Forum</span>
         </Link>
       </li>
       <li>
         <Link to="/dashboard">
-          <i className="fas fa-cog"></i>{' '}
-          <span className="hide-sm">Dashboard</span>
+          <i className="fas fa-cog"></i> <span className="hide-sm">Profil</span>
         </Link>
       </li>
       <li>
         <a onClick={logout} href="#!">
           <i className="fas fa-sign-out-alt"></i>{' '}
-          <span className="hide-sm">Logout</span>
+          <span className="hide-sm">Logga ut</span>
         </a>
       </li>
     </ul>
@@ -45,24 +44,25 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <li>
         <Link to="/map">
           <i className="fas fa-map-marker-alt"></i>{' '}
-          <span className="hide-sm">Map</span>
+          <span className="hide-sm">Karta</span>
         </Link>
       </li>
       <li>
         <Link to="/profiles">
-          <i className="fas fa-user"></i> <span className="hide-sm">Users</span>
+          <i className="fas fa-user"></i>{' '}
+          <span className="hide-sm">Användare</span>
         </Link>
       </li>
       <li>
         <Link to="/register">
           <i className="fas fa-user-plus"></i>{' '}
-          <span className="hide-sm">Register</span>
+          <span className="hide-sm">Registrera</span>
         </Link>
       </li>
       <li>
         <Link to="/login">
           <i className="fas fa-sign-in-alt"></i>{' '}
-          <span className="hide-sm">Login</span>
+          <span className="hide-sm">Logga in</span>
         </Link>
       </li>
     </ul>

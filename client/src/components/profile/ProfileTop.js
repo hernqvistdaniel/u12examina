@@ -11,24 +11,24 @@ const ProfileTop = ({
     social,
     lastLogin,
     isOnline,
-    user: { name, avatar }
-  }
+    user: { name, avatar },
+  },
 }) => {
   return (
     <div className="profile-top bg-primary p-2">
       <img className="round-img my-1" src={avatar} alt="" />
       <h1 className="large">{name}</h1>
       <p className="lead">
-        {status} {company && <span> at {company}</span>}
+        {status} {company && <span> på {company}</span>}
       </p>
       {isOnline && (
         <span>
-          <p>User is Online</p>{' '}
+          <p>Den här användaren är online</p>{' '}
           <i style={{ color: 'green' }} className="fas fa-globe"></i>
         </span>
       )}
       <p>
-        Last Login:{' '}
+        Senast inloggad:{' '}
         <Moment className="stats" fromNow>
           {lastLogin}
         </Moment>
@@ -71,7 +71,7 @@ const ProfileTop = ({
 };
 
 ProfileTop.propTypes = {
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
 export default ProfileTop;
