@@ -49,18 +49,17 @@ const isOnline = async id => {
 };
 
 const setOnlineStatusToProfileObject = (profiles, whoIsOnline) => {
-  let profilesWithOnlineStatus = [];
+  // let profilesWithOnlineStatus = [];
 
   profiles.forEach(profile => {
+    profile.isOnline = false;
     whoIsOnline.forEach(user => {
       if (profile.user._id.toString() === user.user.toString()) {
-        profilesWithOnlineStatus.push({ ...profile, isOnline: true });
-      } else {
-        profilesWithOnlineStatus.push({ ...profile, isOnline: false });
+        profile.isOnline = true;
       }
     });
   });
-  return profilesWithOnlineStatus;
+  return profiles;
 };
 
 module.exports = {

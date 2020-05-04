@@ -14,23 +14,23 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="containPageSize">
-          <h1 className="large text-primary">Användare</h1>
-          <p className="lead">
-            <i className="fas fa-users"></i> Spana in och connecta med andra
+          <div className="containPageSize">
+            <h1 className="large text-primary">Användare</h1>
+            <p className="lead">
+              <i className="fas fa-users"></i> Spana in och connecta med andra
             användare!
           </p>
-          <div className="profiles">
-            {profiles.length > 0 ? (
-              profiles.map((profile) => (
-                <ProfileItem key={profile._id} profile={profile} />
-              ))
-            ) : (
-              <h4>Hittade inga profiler..</h4>
-            )}
+            <div className="profiles">
+              {profiles.length > 0 ? (
+                profiles.map((profile) => (
+                  <ProfileItem key={profile._id} profile={profile} />
+                ))
+              ) : (
+                  <h4>Hittade inga profiler..</h4>
+                )}
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 };

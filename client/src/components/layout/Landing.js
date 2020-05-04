@@ -13,7 +13,13 @@ const Landing = ({ isAuthenticated }) => {
       <div className="dark-overlay">
         <div className="landing-inner">
           <h1 className="x-large">Rcycld</h1>
-          <p className="lead">Se vart din närmaste station är!</p>
+          <p className="lead">Återvinnings-communityt för alla!</p>
+          <p className="startPageText">Här kan du skapa ett personligt konto,
+          skriva med andra återvinnare i forumet och även hitta den närmaste återvinningsstationen beroende på var du befinner dig!</p>
+          <br />
+          <p className="startPageText">Du kan även hitta nyheter och tips och tricks som underlättar din återvinning!</p>
+          <br />
+          <p className="lead">Välkommen!</p>
           <div className="buttons">
             <Link to="/register" className="btn btn-primary">
               Registrera

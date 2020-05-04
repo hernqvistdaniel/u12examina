@@ -13,82 +13,82 @@ const PostItem = ({
   post: { _id, text, name, avatar, user, likes, comments, date },
   showActions,
 }) => (
-  <Link
-    to={`/posts/${_id}`}
-    className="post bg-light p-1 my-1"
-    onClick={(e) => {
-      e.stopPropagation();
-    }}
-  >
-    <div>
-      <Link
-        to={`/profile/${user}`}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        <img className="round-img" src={avatar} alt="" />
-        <h4>{name}</h4>
-      </Link>
-    </div>
-    <div>
-      <p className="my-1">{text}</p>
-      <p className="post-date">
-        Skrivet <Moment fromNow>{date}</Moment>
-      </p>
-      {showActions && (
-        <div className="buttonCont">
-          <span className="votesDiv">
-            <i
+    <Link
+      to={`/posts/${_id}`}
+      className="post bg-light p-1 my-1"
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
+      <div>
+        <Link
+          to={`/profile/${user}`}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <img className="round-img" src={avatar} alt="" />
+          <h4>{name}</h4>
+        </Link>
+      </div>
+      <div>
+        <p className="my-1">{text}</p>
+        <p className="post-date">
+          Skrivet <Moment fromNow>{date}</Moment>
+        </p>
+        {showActions && (
+          <div className="buttonCont">
+            <span className="votesDiv">
+              <i
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  addLike(_id);
+                }}
+                style={{ cursor: 'pointer' }}
+                className="fas fa-plus-square fa-lg"
+              ></i>{' '}
+              <span>{likes.length}</span>
+              <i
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  removeLike(_id);
+                }}
+                style={{ cursor: 'pointer' }}
+                className="fas fa-minus-square fa-lg"
+              ></i>{' '}
+            </span>
+            <Link
+              to={`/posts/${_id}`}
               onClick={(e) => {
-                e.preventDefault();
                 e.stopPropagation();
-                addLike(_id);
               }}
-              style={{ cursor: 'pointer' }}
-              className="fas fa-plus-square fa-lg"
-            ></i>{' '}
-            <span>{likes.length}</span>
-            <i
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                removeLike(_id);
-              }}
-              style={{ cursor: 'pointer' }}
-              className="fas fa-minus-square fa-lg"
-            ></i>{' '}
-          </span>
-          <Link
-            to={`/posts/${_id}`}
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            className="btn btn-primary"
-          >
-            Kommentarer{' '}
-            {comments.length > 0 && (
-              <span className="comment-count">{comments.length}</span>
-            )}
-          </Link>
-          {!auth.loading && user === auth.user._id && (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                deletePost(_id);
-              }}
-              type="button"
-              className="btn btn-danger roundedButton"
+              className="btn btn-primary"
             >
-              <i className="fas fa-times"></i>
-            </button>
-          )}
-        </div>
-      )}
-    </div>
-  </Link>
-);
+              Kommentarer{' '}
+              {comments.length > 0 && (
+                <span className="comment-count">{comments.length}</span>
+              )}
+            </Link>
+            {!auth.loading && user === auth.user._id && (
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  deletePost(_id);
+                }}
+                type="button"
+                className="btn btn-danger roundedButton"
+              >
+                <i className="fas fa-times"></i>
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+    </Link>
+  );
 
 PostItem.defaultProps = {
   showActions: true,

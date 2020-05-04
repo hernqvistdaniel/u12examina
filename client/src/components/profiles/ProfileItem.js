@@ -17,7 +17,7 @@ const ProfileItem = ({
       <img src={avatar}></img>
       <div>
         <h2>{name}</h2>
-        <h4><i>{status}</i></h4>
+        <p>--<i>{status}</i>--</p>
         <p className="">{location && <span>{location}</span>}</p>
 
         {isOnline && (
@@ -29,15 +29,14 @@ const ProfileItem = ({
           </div>
         )}
         <p>
-          {company && <span><b>{company}</b></span>}
+          {company && <span>Jobbar på/med: <b>{company}</b></span>}
         </p>
-        <p className="my-1">{location && <span>{location}</span>}</p>
-
         <Link to={`/profile/${_id}`} className="btn btn-primary">
           Profil
         </Link>
       </div>
       <ul>
+        <p>Intressen:</p>
         {skills.slice(0, 4).map((skill, index) => (
           <li key={index} className="text-primary">
             <i className="fas fa-check"></i> {skill}

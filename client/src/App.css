@@ -432,12 +432,44 @@ input[type='date']:disabled {
   margin-right: 0.6rem;
 }
 
+.news {
+  position: relative;
+  text-align: center;
+  background: url('./img/peoplethrowingtrash.jpg') no-repeat
+    center center/cover;
+  height: 100vh;
+}
+
+
+.news-inner {
+  color: #fff;
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.horrow {
+  width: 200px;
+  margin-bottom: 30px;
+}
+
+
 /* Landing Page */
 .landing {
   position: relative;
   background: url('./img/photo-1532996122724-e3c354a0b15b.jpeg') no-repeat
     center center/cover;
   height: 100vh;
+}
+
+.startPageText {
+  width: 60%;
+  text-align: center;
 }
 
 .landing-inner {

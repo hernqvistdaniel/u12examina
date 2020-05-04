@@ -160,6 +160,8 @@ router.get('/user/:user_id', async (req, res) => {
       req.params.user_id
     );
 
+    const isOnline = true; // DETTA MÅSTE HÄMTAS PÅ NÅGOT SÄTT!!!
+
     const postsByAuthor = await Post.find({ user: req.params.user_id });
 
     const nrLikes = getNrOfLikes(postsByAuthor);
@@ -169,7 +171,8 @@ router.get('/user/:user_id', async (req, res) => {
       ...profile._doc,
       nrPosts,
       nrComments,
-      nrLikes
+      nrLikes,
+      isOnline
     });
   } catch (err) {
     console.error(err);
@@ -377,9 +380,9 @@ router.get('/github/:username', (req, res) => {
     const options = {
       uri: `https://api.github.com/users/${
         req.params.username
-      }/repos?per_page=5&sort=created:asc&client_id=${config.get(
-        'githubClientId'
-      )}&client_secret=${config.get('githubSecret')}`,
+        }/repos?per_page=5&sort=created:asc&client_id=${config.get(
+          'githubClientId'
+        )}&client_secret=${config.get('githubSecret')}`,
       method: 'GET',
       headers: { 'user-agent': 'node.js' }
     };

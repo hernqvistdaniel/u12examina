@@ -8,6 +8,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
+        <Link to="/news">
+          <i className="fas fa-newspaper"></i>{' '}
+          <span className="hide-sm">Nyheter</span>
+        </Link>
+      </li>
+      <li>
         <Link to="/map">
           <i className="fas fa-map-marker-alt"></i>{' '}
           <span className="hide-sm">Map</span>
@@ -41,6 +47,12 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const guestLinks = (
     <ul>
+      <li>
+        <Link to="/news">
+          <i className="fas fa-newspaper"></i>{' '}
+          <span className="hide-sm">Nyheter</span>
+        </Link>
+      </li>
       <li>
         <Link to="/map">
           <i className="fas fa-map-marker-alt"></i>{' '}
