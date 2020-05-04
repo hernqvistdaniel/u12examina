@@ -15,15 +15,15 @@ const Education = ({ education, deleteEducation }) => {
         {edu.to === null ? (
           ' Nuvarande'
         ) : (
-          <Moment format="YYYY/MM/DD">{edu.to}</Moment>
-        )}
+            <Moment format="YYYY/MM/DD">{edu.to}</Moment>
+          )}
       </td>
       <td>
         <button
           onClick={() => deleteEducation(edu._id)}
           className="btn btn-danger"
         >
-          Radera
+          X
         </button>
       </td>
     </tr>

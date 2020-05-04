@@ -21,33 +21,33 @@ const Dashboard = ({
   return loading && profile === null ? (
     <Spinner />
   ) : (
-    <Fragment>
-      <h1 className="large text-primary">Profil</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> Välkommen {user && user.name}
-      </p>
-      {profile !== null ? (
-        <Fragment>
-          <DashboardActions />
-          <Experience experience={profile.experience} />
-          <Education education={profile.education} />
+      <Fragment>
+        <h1 className="large text-primary">Profil</h1>
+        <p className="lead">
+          <i className="fas fa-user"></i> Välkommen {user && user.name}
+        </p>
+        {profile !== null ? (
+          <Fragment>
+            <DashboardActions />
+            <Experience experience={profile.experience} />
+            <Education education={profile.education} />
 
-          <div>
-            <button className="btn btn-danger" onClick={() => deleteAccount()}>
-              <i className="fas fa-user"></i> Radera mitt konto!
+            <div className="deleteAccountButton">
+              <button className="btn btn-danger mt-5" onClick={() => deleteAccount()}>
+                <i className="fas fa-user"></i> Radera mitt konto!
             </button>
-          </div>
-        </Fragment>
-      ) : (
-        <Fragment>
-          <p>Du har inte lagt till något i din profil.</p>
-          <Link to="/create-profile" className="btn btn-primary my-1">
-            Skapa Profil
+            </div>
+          </Fragment>
+        ) : (
+            <Fragment>
+              <p>Du har inte lagt till något i din profil.</p>
+              <Link to="/create-profile" className="btn btn-primary my-1">
+                Skapa Profil
           </Link>
-        </Fragment>
-      )}
-    </Fragment>
-  );
+            </Fragment>
+          )}
+      </Fragment>
+    );
 };
 
 Dashboard.propTypes = {

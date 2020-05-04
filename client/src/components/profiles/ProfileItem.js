@@ -13,9 +13,13 @@ const ProfileItem = ({
   },
 }) => {
   return (
-    <div className="">
+    <div className="profile">
+      <img src={avatar}></img>
       <div>
         <h2>{name}</h2>
+        <h4><i>{status}</i></h4>
+        <p className="">{location && <span>{location}</span>}</p>
+
         {isOnline && (
           <div>
             <i style={{ color: 'green' }} className="fas fa-globe">
@@ -25,9 +29,10 @@ const ProfileItem = ({
           </div>
         )}
         <p>
-          {status} {company && <span> at {company}</span>}
+          {company && <span><b>{company}</b></span>}
         </p>
-        <p className="my-1">{location && <span>{}</span>}</p>
+        <p className="my-1">{location && <span>{location}</span>}</p>
+
         <Link to={`/profile/${_id}`} className="btn btn-primary">
           Profil
         </Link>

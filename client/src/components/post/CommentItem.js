@@ -31,7 +31,7 @@ const CommentItem = ({
               deleteComment(postId, _id);
             }}
           >
-            Ta bort
+            X
           </button>
         )}
       </div>

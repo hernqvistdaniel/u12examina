@@ -15,15 +15,15 @@ const Experience = ({ experience, deleteExperience }) => {
         {exp.to === null ? (
           ' Nuvarande'
         ) : (
-          <Moment format="YYYY/MM/DD">{exp.to}</Moment>
-        )}
+            <Moment format="YYYY/MM/DD">{exp.to}</Moment>
+          )}
       </td>
       <td>
         <button
           onClick={() => deleteExperience(exp._id)}
           className="btn btn-danger"
         >
-          Radera
+          X
         </button>
       </td>
     </tr>

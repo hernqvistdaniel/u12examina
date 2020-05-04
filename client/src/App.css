@@ -164,7 +164,7 @@ img {
 }
 
 .containPageSize {
-  height: 800px;
+  min-height: 800px;
 }
 
 .map {
@@ -395,9 +395,19 @@ button {
   justify-content: space-between;
 }
 
+.profile {
+  border: 1px solid green;
+  display: flex;
+  flex-direction: row;
+}
+
 .footerItem {
   color: white;
   width: 200px;
+}
+
+.deleteAccountButton {
+  margin-top: 100px;
 }
 
 .navbar ul {
@@ -580,6 +590,10 @@ input[type='date']:disabled {
   padding: 0.1rem 0.2rem;
   border-radius: 5px;
   font-size: 0.8rem;
+}
+
+.commentDelete {
+  width: 500px;
 }
 
 .post .post-date {

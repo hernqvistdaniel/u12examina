@@ -53,6 +53,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           />
         </div>
         <div className="form-group">
+          <p>Om du vill ha en bild kopplad till din profil så bör du använda samma email som du gör till din <a href="https://gravatar.com" target="_blank">gravatar</a>! (man kan logga in med Google!)</p>
           <input
             type="email"
             placeholder="Email"
