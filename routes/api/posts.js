@@ -205,6 +205,7 @@ router.post(
 // Delete a Comment
 // Private
 router.delete('/comment/:post_id/:comment_id', auth, async (req, res) => {
+  console.log('now i press the delete button')
   try {
     const post = await Post.findById(req.params.post_id);
 
@@ -216,6 +217,7 @@ router.delete('/comment/:post_id/:comment_id', auth, async (req, res) => {
     if (!comment) {
       return res.status(404).json({ msg: 'Comment does not exist' });
     }
+    console.log(comment)
 
     // check user is author
     if (comment.user.toString() !== req.user.id) {

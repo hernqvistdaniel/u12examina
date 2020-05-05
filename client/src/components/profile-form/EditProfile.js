@@ -215,9 +215,9 @@ const EditProfile = ({
           </Fragment>
         )}
 
-        <input type="submit" className="btn btn-primary my-1" />
+        <input type="submit" className="btn btn-primary my-1" value="Spara" />
         <Link className="btn btn-light my-1" to="/dashboard">
-          Gå tillbaka.
+          Gå tillbaka
         </Link>
       </form>
     </Fragment>
