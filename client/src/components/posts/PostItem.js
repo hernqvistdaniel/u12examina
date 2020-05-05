@@ -20,7 +20,7 @@ const PostItem = ({
         e.stopPropagation();
       }}
     >
-      <div>
+      <div className="postAvatar">
         <Link
           to={`/profile/${user}`}
           onClick={(e) => {

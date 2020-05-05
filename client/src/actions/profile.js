@@ -105,7 +105,7 @@ export const createProfile = (
     });
 
     dispatch(
-      setAlert(edit ? 'Profile Updated!' : 'Profile Created!', 'success')
+      setAlert(edit ? 'Profilen uppdaterad!' : 'Profilen skapad!', 'success')
     );
 
     if (!edit) {
@@ -140,7 +140,7 @@ export const addExperience = (formData, history) => async dispatch => {
       payload: res.data
     });
 
-    dispatch(setAlert('Experience(s) Added!', 'success'));
+    dispatch(setAlert('Erfarenhet(er) tillagda!', 'success'));
 
     history.push('/dashboard');
   } catch (error) {
@@ -172,7 +172,7 @@ export const addEducation = (formData, history) => async dispatch => {
       payload: res.data
     });
 
-    dispatch(setAlert('Education(s) Added!', 'success'));
+    dispatch(setAlert('Utbildning(ar) tillagda!', 'success'));
 
     history.push('/dashboard');
   } catch (error) {
@@ -198,7 +198,7 @@ export const deleteExperience = id => async dispatch => {
       payload: res.data
     });
 
-    dispatch(setAlert('Experience Deleted!', 'success'));
+    dispatch(setAlert('Erfarenhet borttagen!', 'success'));
   } catch (error) {
     dispatch({
       type: PROFILE_ERROR,
@@ -217,7 +217,7 @@ export const deleteEducation = id => async dispatch => {
       payload: res.data
     });
 
-    dispatch(setAlert('Education Deleted!', 'success'));
+    dispatch(setAlert('Utbildning borttagen!', 'success'));
   } catch (error) {
     dispatch({
       type: PROFILE_ERROR,
@@ -228,14 +228,14 @@ export const deleteEducation = id => async dispatch => {
 
 // delete account and profile
 export const deleteAccount = id => async dispatch => {
-  if (window.confirm('Are you sure? This cannot be undone.')) {
+  if (window.confirm('Är du verkligen säker? Ditt konto kan inte återställas.')) {
     try {
       dispatch({ type: CLEAR_PROFILE });
 
       dispatch({ type: ACCOUNT_DELETED });
 
       dispatch(
-        setAlert('You account has been permanently deleted!', 'warning')
+        setAlert('Ditt konto har blivit permanent borttaget!', 'warning')
       );
     } catch (error) {
       dispatch({

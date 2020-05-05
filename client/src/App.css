@@ -630,6 +630,10 @@ input[type='date']:disabled {
   border: 1px rounded black;
 }
 
+.postAvatar {
+  text-align: center;
+}
+
 .post > div > button {
   border-radius: 50%;
 }

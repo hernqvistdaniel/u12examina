@@ -72,7 +72,7 @@ export const deletePost = id => async dispatch => {
       payload: id
     });
 
-    dispatch(setAlert('Post removed!', 'success'));
+    dispatch(setAlert('Inlägg borttaget!', 'success'));
   } catch (error) {
     dispatch({
       type: POST_ERROR,
@@ -97,7 +97,7 @@ export const addPost = formData => async dispatch => {
       payload: res.data
     });
 
-    dispatch(setAlert('Post created!', 'success'));
+    dispatch(setAlert('Inlägg skapat!', 'success'));
   } catch (error) {
     dispatch({
       type: POST_ERROR,
@@ -143,7 +143,7 @@ export const addComment = (postId, formData) => async dispatch => {
       payload: res.data
     });
 
-    dispatch(setAlert('Comment added!', 'success'));
+    dispatch(setAlert('Kommentar tillagd!', 'success'));
   } catch (error) {
     dispatch({
       type: POST_ERROR,
@@ -162,7 +162,7 @@ export const deleteComment = (postId, commentId) => async dispatch => {
       payload: commentId
     });
 
-    dispatch(setAlert('Comment removed!', 'success'));
+    dispatch(setAlert('Kommentar borttagen!', 'success'));
   } catch (error) {
     dispatch({
       type: POST_ERROR,
