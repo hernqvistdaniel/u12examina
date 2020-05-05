@@ -440,6 +440,23 @@ input[type='date']:disabled {
   height: 100vh;
 }
 
+.commentTextBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.commentDeleteButton {
+  display: flex;
+  align-items: center;
+}
+
+.commentHR {
+  text-align: center;
+  margin-left: 100px;
+  width: 800px;
+  font-size: 17px;
+}
 
 .news-inner {
   color: #fff;
@@ -603,14 +620,12 @@ input[type='date']:disabled {
 }
 
 .post > div > button {
-  width: 55px;
-  justify-items: flex-end;
   border-radius: 50%;
 }
 
-.post > div:first-child {
+/* .post > div:first-child {
   text-align: center;
-}
+} */
 
 .post img {
   width: 100px;

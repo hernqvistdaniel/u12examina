@@ -22,7 +22,7 @@ const Footer = () => {
       <div className="footerContent">
         <div className="footerItem">
           <p>
-            Kontakta Rcycld <a href="google.com">här!</a>
+            Kontakta Rcycld <a href="mailto:dhernqvist@gmail.com">här!</a>
           </p>
           <h1>
             <i className="fas fa-recycle"></i> Rcycld
@@ -30,14 +30,18 @@ const Footer = () => {
         </div>
         <div className="footerItem">
           <p>
-            github för det här projektet kan hämtas{' '}
-            <a href="github.com">här!</a>
+            Det här projektet finns att se på GitHub om du klickar{' '}
+            <a href="https://github.com/hernqvistdaniel/devhub" target="_blank" rel="noopener noreferrer">här!</a>
           </p>
         </div>
         <div className="footerItem">
           <p>
-            Kartor hämtas med google.maps och rapporteringsknappen leder till
-            FTI:s hemsida för avfalls-stations-rapportering
+            Kartor hämtas med Google.Maps.
+          </p>
+          <br />
+          <p>
+            Rapporteringsknappen leder till
+            FTI:s hemsida för avfalls-stations-rapportering.
           </p>
         </div>
       </div>

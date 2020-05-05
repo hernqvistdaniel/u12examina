@@ -20,19 +20,20 @@ const CommentItem = ({
           Skrivet <Moment fromNow>{date}</Moment>{' '}
         </p>
       </Link>
-      <div>
+      <div className="commentTextBox">
         <p className="my-1">{text}</p>
         {!auth.loading && user === auth.user._id && (
-          <button
-            className="commentDelete"
-            style={{ color: 'red', cursor: 'pointer' }}
-            onClick={(e) => {
-              e.stopPropagation();
-              deleteComment(postId, _id);
-            }}
-          >
-            X
+          <div className="commentDeleteButton">
+            <button
+              className="btn btn-danger"
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteComment(postId, _id);
+              }}
+            >
+              X
           </button>
+          </div>
         )}
       </div>
     </div>

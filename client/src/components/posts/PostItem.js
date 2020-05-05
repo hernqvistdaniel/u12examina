@@ -46,7 +46,7 @@ const PostItem = ({
                   addLike(_id);
                 }}
                 style={{ cursor: 'pointer' }}
-                className="fas fa-plus-square fa-lg"
+                className="fas fa-angle-up fa-lg"
               ></i>{' '}
               <span>{likes.length}</span>
               <i
@@ -56,7 +56,7 @@ const PostItem = ({
                   removeLike(_id);
                 }}
                 style={{ cursor: 'pointer' }}
-                className="fas fa-minus-square fa-lg"
+                className="fas fa-angle-down fa-lg"
               ></i>{' '}
             </span>
             <Link
