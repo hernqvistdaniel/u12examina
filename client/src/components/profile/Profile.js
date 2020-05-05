@@ -8,7 +8,6 @@ import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
-import ProfileGithub from './ProfileGithub';
 
 const Profile = ({
   getProfileById,
@@ -24,55 +23,55 @@ const Profile = ({
       {profile === null || loading ? (
         <Spinner />
       ) : (
-        <Fragment>
-          <Link to="/profiles" className="btn btn-light">
-            Tillbaka till profiler!
+          <Fragment>
+            <Link to="/profiles" className="btn btn-light">
+              Tillbaka till profiler!
           </Link>
-          {auth.isAuthenticated &&
-            auth.loading === false &&
-            auth.user._id === profile.user && (
-              <Link to="/edit-profile" className="btn btn-dark">
-                Ändra Profil
-              </Link>
-            )}
-          <div className="profile-grid my-1">
-            <ProfileTop profile={profile} />
-            <ProfileAbout profile={profile} />
-
-            <div className="profile-exp bg-white p-2">
-              <h2 className="text-primary">Erfarenheter</h2>
-              {profile.experience.length > 0 ? (
-                <Fragment>
-                  {profile.experience.map((experience) => (
-                    <ProfileExperience
-                      key={experience._id}
-                      experience={experience}
-                    />
-                  ))}
-                </Fragment>
-              ) : (
-                <h4>Inga erfarenheter tillagda</h4>
+            {auth.isAuthenticated &&
+              auth.loading === false &&
+              auth.user._id === profile.user && (
+                <Link to="/edit-profile" className="btn btn-dark">
+                  Ändra Profil
+                </Link>
               )}
-            </div>
+            <div className="profile-grid my-1">
+              <ProfileTop profile={profile} />
+              <ProfileAbout profile={profile} />
 
-            <div className="profile-edu bg-white p-2">
-              <h2 className="text-primary">Utbildning</h2>
-              {profile.education.length > 0 ? (
-                <Fragment>
-                  {profile.education.map((education) => (
-                    <ProfileEducation
-                      key={education._id}
-                      education={education}
-                    />
-                  ))}
-                </Fragment>
-              ) : (
-                <h4>Inga utbildningar tillagda</h4>
-              )}
+              <div className="profile-exp bg-white p-2">
+                <h2 className="text-primary">Erfarenheter</h2>
+                {profile.experience.length > 0 ? (
+                  <Fragment>
+                    {profile.experience.map((experience) => (
+                      <ProfileExperience
+                        key={experience._id}
+                        experience={experience}
+                      />
+                    ))}
+                  </Fragment>
+                ) : (
+                    <h4>Inga erfarenheter tillagda</h4>
+                  )}
+              </div>
+
+              <div className="profile-edu bg-white p-2">
+                <h2 className="text-primary">Utbildning</h2>
+                {profile.education.length > 0 ? (
+                  <Fragment>
+                    {profile.education.map((education) => (
+                      <ProfileEducation
+                        key={education._id}
+                        education={education}
+                      />
+                    ))}
+                  </Fragment>
+                ) : (
+                    <h4>Inga utbildningar tillagda</h4>
+                  )}
+              </div>
             </div>
-          </div>
-        </Fragment>
-      )}
+          </Fragment>
+        )}
     </Fragment>
   );
 };

@@ -14,7 +14,7 @@ const ProfileItem = ({
 }) => {
   return (
     <div className="profile">
-      <img src={avatar}></img>
+      <img src={avatar} alt="User avatar"></img>
       <div>
         <h2>{name}</h2>
         <p>--<i>{status}</i>--</p>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import { GoogleApiWrapper, Marker } from 'google-maps-react';
 import { gApiKey } from '../../CONSTANTS';
 import recyclePicture from '../../img/recyclepic.jpeg';
 
@@ -91,25 +91,26 @@ export class MapComponent extends Component {
                     <a
                       href="https://webapp.ftiab.se/Forms/LeaveOpinion.aspx"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <button>Klicka här!</button>
                     </a>
                   </div>
                 )}
               </div>
-              <img src={recyclePicture} className="recycleImage" />
+              <img src={recyclePicture} className="recycleImage" alt="Three arrows that stands for recycling" />
             </div>
           ) : (
-            <div className="mapRightBox">
-              <div className="mapText">
-                <h1>
-                  Här är dina närmaste stationer, klicka på en för att få mer
-                  information!
+              <div className="mapRightBox">
+                <div className="mapText">
+                  <h1>
+                    Här är dina närmaste stationer, klicka på en för att få mer
+                    information!
                 </h1>
+                </div>
+                <img src={recyclePicture} className="recycleImage" alt="Three arrows that stands for recycling" />
               </div>
-              <img src={recyclePicture} className="recycleImage" />
-            </div>
-          )}
+            )}
         </div>
       </div>
     );

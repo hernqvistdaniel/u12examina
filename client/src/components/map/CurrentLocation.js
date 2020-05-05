@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 const turf = require('@turf/turf');
 
 const mapStyles = {
@@ -54,7 +53,6 @@ export class CurrentLocation extends React.Component {
           const coords = pos.coords;
           const map = this.map;
           const google = this.props.google;
-          const infowindow = InfoWindow;
           const dataToParent = this.props.callbackFromParent;
 
           this.setState({

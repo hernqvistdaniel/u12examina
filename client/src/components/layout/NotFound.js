@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 
-const NotFound = (props) => {
+const NotFound = () => {
   return (
     <Fragment>
       <h1 className="x-large text-primary">
