@@ -159,8 +159,11 @@ router.get('/user/:user_id', async (req, res) => {
       postsWhereSpecUserHasCommented,
       req.params.user_id
     );
-
-    const isOnline = true; // DETTA MÅSTE HÄMTAS PÅ NÅGOT SÄTT!!!
+    let isOnline = false;
+    const seeOnlineStatus = await UsersOnline.find({ user: req.params.user_id });
+    if (seeOnlineStatus.length > 0) {
+      isOnline = true;
+    }
 
     const postsByAuthor = await Post.find({ user: req.params.user_id });
 

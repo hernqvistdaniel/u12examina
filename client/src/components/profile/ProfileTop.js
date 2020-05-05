@@ -15,7 +15,7 @@ const ProfileTop = ({
   },
 }) => {
   return (
-    <div className="profile-top bg-primary p-2">
+    <div className="profile-top bg-dark p-2">
       <img className="round-img my-1" src={avatar} alt="" />
       <h1 className="large">{name}</h1>
       {status &&
@@ -26,11 +26,12 @@ const ProfileTop = ({
       <p className="lead">
         {company && <span>{company}</span>}
       </p>
-      {isOnline && (
-        <span>
-          <p>Den här användaren är online</p>{' '}
+      {isOnline === true && (
+        <div className="thisUserIsOnline">
+          <p>info: {isOnline}</p>
           <i style={{ color: 'green' }} className="fas fa-globe"></i>
-        </span>
+          <p>Den här användaren är online</p>{' '}
+        </div>
       )}
       <p>
         Senast inloggad:{' '}

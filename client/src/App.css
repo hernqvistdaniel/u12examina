@@ -451,6 +451,17 @@ input[type='date']:disabled {
   align-items: center;
 }
 
+.thisUserIsOnline {
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  color: green;
+}
+
+.thisUserIsOnline > p {
+  margin: 0 10px 5px 10px;;
+}
+
 .commentHR {
   text-align: center;
   margin-left: 100px;
