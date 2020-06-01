@@ -1,13 +1,13 @@
 # DevHub
 
-Devhub is a social community platform where users can write posts and comments. See who's online and stuff.
+Rcycld is a social community platform where users can write posts and comments. See who's online and stuff.
 
 ## Installation
 
 ```bash
-git clone https://github.com/hernqvistdaniel/devhub.git
+git clone https://github.com/hernqvistdaniel/u12examina.git
 
-cd devhub
+cd u12examina
 
 npm install
 ```
